@@ -1,0 +1,131 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CourseWork
+{
+    public partial class Form1 : Form
+    {
+        public UserControl ChildElem;
+        public int itemMenu1 = 1;
+        public Form1()
+        {
+            InitializeComponent();
+            Faculties_1 faculties_1 = new Faculties_1(this);
+            faculties_1.Location = new Point(250, 49);
+            this.Controls.Add(faculties_1);
+            ChildElem = faculties_1;
+        }
+
+        private void itemsMenu1GrStudents_Click(object sender, EventArgs e)
+        {
+            Type myType = ChildElem.GetType();
+            if (myType.Name != nameof(GraduateStudents))
+            {
+                this.Controls.Remove(ChildElem);
+
+                GraduateStudents graduateStudents = new GraduateStudents(this);
+                graduateStudents.Location = new Point(250, 49);
+                this.Controls.Add(graduateStudents);
+                ChildElem = graduateStudents;
+                itemMenu1 = 4;
+            }
+        }
+
+        private void itemsMenu1Department_Click(object sender, EventArgs e)
+        {
+            Type myType = ChildElem.GetType();
+            if (myType.Name != nameof(Departments))
+            {
+                this.Controls.Remove(ChildElem);
+
+                Departments departments = new Departments(this);
+                departments.Location = new Point(250, 49);
+                this.Controls.Add(departments);
+                ChildElem = departments;
+                itemMenu1 = 3;
+            }
+        }
+
+        private void itemsMenu1Students_Click(object sender, EventArgs e)
+        {
+            Type myType = ChildElem.GetType();
+            if (myType.Name != nameof(Specialties))
+            {
+                this.Controls.Remove(ChildElem);
+
+                Specialties specialties = new Specialties(this);
+                specialties.Location = new Point(250, 49);
+                this.Controls.Add(specialties);
+                ChildElem = specialties;
+                itemMenu1 = 2;
+            }
+        }
+
+        private void itemsMenu1Faculties_Click(object sender, EventArgs e)
+        {
+            Type myType = ChildElem.GetType();
+            if (myType.Name != nameof(Faculties_1))
+            {
+                this.Controls.Remove(ChildElem);
+
+                Faculties_1 faculties_1 = new Faculties_1(this);
+                faculties_1.Location = new Point(250, 49);
+                this.Controls.Add(faculties_1);
+                ChildElem = faculties_1;
+                itemMenu1 = 1;
+            }
+        }
+
+        private void itemsMenuStrip2_Click(object sender, EventArgs e)
+        {
+            Type myType = ChildElem.GetType();
+
+            if(myType.Name != nameof(Faculties_1) && itemMenu1 == 1)
+            {
+                this.Controls.Remove(ChildElem);
+
+                Faculties_1 faculties_1 = new Faculties_1(this);
+                faculties_1.Location = new Point(250, 49);
+                this.Controls.Add(faculties_1);
+                ChildElem = faculties_1;
+            }
+
+            if (myType.Name != nameof(Specialties) && itemMenu1 == 2)
+            {
+                this.Controls.Remove(ChildElem);
+
+                Specialties specialties = new Specialties(this);
+                specialties.Location = new Point(250, 49);
+                this.Controls.Add(specialties);
+                ChildElem = specialties;
+            }
+
+            if (myType.Name != nameof(Departments) && itemMenu1 == 3)
+            {
+                this.Controls.Remove(ChildElem);
+
+                Departments departments = new Departments(this);
+                departments.Location = new Point(250, 49);
+                this.Controls.Add(departments);
+                ChildElem = departments;
+            }
+
+            if (myType.Name != nameof(GraduateStudents) && itemMenu1 == 4)
+            {
+                this.Controls.Remove(ChildElem);
+
+                GraduateStudents graduateStudents = new GraduateStudents(this);
+                graduateStudents.Location = new Point(250, 49);
+                this.Controls.Add(graduateStudents);
+                ChildElem = graduateStudents;
+            }
+        }
+    }
+}
