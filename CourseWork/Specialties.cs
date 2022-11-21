@@ -18,12 +18,16 @@ namespace CourseWork
         {
             InitializeComponent();
             Parent = f;
+            LoadSpecialities();
+        }
 
+        private void LoadSpecialities()
+        {
             using (UniversityContext db = new UniversityContext())
             {
                 var dep = db.Departments.Where(d => d.IdFaculty == Parent.IdFacult).Select(d => d.Id).ToList();
                 var specs = db.Specialities.Where(s => dep.Contains(s.IdDepartment ?? 0)).ToList();
-                for(int i = 0; i < specs.Count; i++)
+                for (int i = 0; i < specs.Count; i++)
                 {
                     Label label = new Label();
                     label.AutoSize = true;
@@ -55,6 +59,8 @@ namespace CourseWork
 
         private void labelSp_Click(object sender, EventArgs e)
         {
+            Label label = sender as Label;
+            Parent.IdSpeciality = int.Parse(label.Name);
             Parent.Controls.Remove(this);
 
             Groups groups = new Groups(Parent);

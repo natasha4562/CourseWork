@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using University;
 
 namespace CourseWork
 {
@@ -17,6 +18,26 @@ namespace CourseWork
         {
             InitializeComponent();
             Parent = f;
+
+            using (UniversityContext db = new UniversityContext())
+            {
+                var groups = db.GroupStudents.Where(g => g.IdSpeciality == Parent.IdSpeciality).ToList();
+                for (int i = 0; i < groups.Count; i++)
+                {
+                    Label label = new Label();
+                    label.AutoSize = true;
+                    label.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+                    label.ForeColor = SystemColors.ControlDark;
+                    label.Location = new Point(22, i * 38 + 90);
+                    label.Name = groups[i].Id.ToString();
+                    label.Size = new Size(250, 38);
+                    label.Text = groups[i].Number;
+                    label.Click += new System.EventHandler(this.labelGr_Click);
+                    label.MouseLeave += new System.EventHandler(this.labelChahgeColor_MouseLeave);
+                    label.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labelChahgeColor_MouseMove);
+                    this.Controls.Add(label);
+                }
+            }
         }
 
         private void labelChahgeColor_MouseMove(object sender, MouseEventArgs e)
