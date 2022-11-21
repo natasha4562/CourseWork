@@ -32,13 +32,10 @@ namespace CourseWork
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuFaculties = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuStudents = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuTeachers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGrStudents = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelMenuF = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
-            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -75,38 +72,6 @@ namespace CourseWork
             this.toolStripMenuStudents.Text = "Студентам";
             this.toolStripMenuStudents.Click += new System.EventHandler(this.itemsMenu1Students_Click);
             // 
-            // menuStrip2
-            // 
-            this.menuStrip2.AutoSize = false;
-            this.menuStrip2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2});
-            this.menuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.menuStrip2.Location = new System.Drawing.Point(0, 49);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(250, 700);
-            this.menuStrip2.TabIndex = 1;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(243, 42);
-            this.toolStripMenuItem1.Text = "Факультет 1";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.itemsMenuStrip2_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(243, 42);
-            this.toolStripMenuItem2.Text = "Факультет 2";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.itemsMenuStrip2_Click);
-            // 
             // toolStripMenuTeachers
             // 
             this.toolStripMenuTeachers.ForeColor = System.Drawing.SystemColors.Control;
@@ -123,13 +88,21 @@ namespace CourseWork
             this.toolStripMenuItemGrStudents.Text = "Аспирантам";
             this.toolStripMenuItemGrStudents.Click += new System.EventHandler(this.itemsMenu1GrStudents_Click);
             // 
+            // panelMenuF
+            // 
+            this.panelMenuF.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelMenuF.Location = new System.Drawing.Point(0, 49);
+            this.panelMenuF.Name = "panelMenuF";
+            this.panelMenuF.Size = new System.Drawing.Size(250, 700);
+            this.panelMenuF.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1178, 749);
+            this.Controls.Add(this.panelMenuF);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.menuStrip2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -139,8 +112,6 @@ namespace CourseWork
             this.Text = "Главная";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,12 +121,10 @@ namespace CourseWork
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuFaculties;
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuStudents;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuTeachers;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGrStudents;
+        private System.Windows.Forms.Panel panelMenuF;
     }
 }
 
