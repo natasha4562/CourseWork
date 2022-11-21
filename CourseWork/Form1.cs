@@ -15,6 +15,7 @@ namespace CourseWork
     {
         public UserControl ChildElem;
         public int itemMenu1 = 1;
+        public int IdFacult = 1; 
         public Form1()
         {
             InitializeComponent();
@@ -42,7 +43,7 @@ namespace CourseWork
                     label.Text = facults[i].Name;
                     label.MaximumSize = new Size(243, 0);
                     label.AutoSize = true;
-                    label.Click += new EventHandler(itemsMenuStrip2_Click);
+                    label.Click += new EventHandler(label_Click);
                     label.MouseLeave += new EventHandler(label_MouseLeave);
                     label.MouseEnter += new EventHandler(label_MouseEnter);
                     panelMenuF.Controls.Add(label);
@@ -109,14 +110,18 @@ namespace CourseWork
                 this.Controls.Add(faculties_1);
                 ChildElem = faculties_1;
                 itemMenu1 = 1;
+                IdFacult = 1;
             }
         }
 
-        private void itemsMenuStrip2_Click(object sender, EventArgs e)
+        private void label_Click(object sender, EventArgs e)
         {
+            Label label = sender as Label;
+            IdFacult = int.Parse(label.Name);
+
             Type myType = ChildElem.GetType();
 
-            if(myType.Name != nameof(Faculties_1) && itemMenu1 == 1)
+            if(itemMenu1 == 1)
             {
                 this.Controls.Remove(ChildElem);
 

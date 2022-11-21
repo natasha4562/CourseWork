@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using University;
 
 namespace CourseWork
 {
@@ -17,6 +18,17 @@ namespace CourseWork
         {
             InitializeComponent();
             Parent = f;
+
+            LoadDean();
+        }
+
+        private void LoadDean()
+        {
+            using (UniversityContext db = new UniversityContext())
+            {
+                var dean = db.Deans.Where(d => d.IdFaculty == Parent.IdFacult).FirstOrDefault();
+                labelFIO.Text = dean.Surname + " " + dean.FirstName + " " + dean.Patronymic;
+            }
         }
 
         private void labelChahgeColor_MouseMove(object sender, MouseEventArgs e)
