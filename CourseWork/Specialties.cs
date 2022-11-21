@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using University;
 
 namespace CourseWork
 {
@@ -17,6 +18,27 @@ namespace CourseWork
         {
             InitializeComponent();
             Parent = f;
+
+            using (UniversityContext db = new UniversityContext())
+            {
+                var dep = db.Departments.Where(d => d.IdFaculty == Parent.IdFacult).Select(d => d.Id).ToList();
+                var specs = db.Specialities.Where(s => dep.Contains(s.IdDepartment ?? 0)).ToList();
+                for(int i = 0; i < specs.Count; i++)
+                {
+                    Label label = new Label();
+                    label.AutoSize = true;
+                    label.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+                    label.ForeColor = SystemColors.ControlDark;
+                    label.Location = new Point(22, i * 38 + 90);
+                    label.Name = specs[i].Id.ToString();
+                    label.Size = new Size(250, 38);
+                    label.Text = specs[i].Name;
+                    label.Click += new System.EventHandler(this.labelSp_Click);
+                    label.MouseLeave += new System.EventHandler(this.labelChahgeColor_MouseLeave);
+                    label.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labelChahgeColor_MouseMove);
+                    this.Controls.Add(label);
+                }
+            }
         }
 
         private void labelChahgeColor_MouseMove(object sender, MouseEventArgs e)

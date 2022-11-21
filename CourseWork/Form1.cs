@@ -131,7 +131,7 @@ namespace CourseWork
                 ChildElem = faculties_1;
             }
 
-            if (myType.Name != nameof(Specialties) && itemMenu1 == 2)
+            if (itemMenu1 == 2)
             {
                 this.Controls.Remove(ChildElem);
 
