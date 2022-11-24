@@ -27,7 +27,11 @@ namespace CourseWork
             using (UniversityContext db = new UniversityContext())
             {
                 var dean = db.Deans.Where(d => d.IdFaculty == Parent.IdFacult).FirstOrDefault();
-                labelFIO.Text = dean.Surname + " " + dean.FirstName + " " + dean.Patronymic;
+                if (dean != null)
+                {
+                    labelFIO.Text = dean.Surname + " " + dean.FirstName + " " + dean.Patronymic;
+
+                }
             }
         }
 
