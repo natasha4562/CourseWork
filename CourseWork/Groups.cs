@@ -19,6 +19,11 @@ namespace CourseWork
             InitializeComponent();
             Parent = f;
 
+            LoadGroups();
+        }
+
+        private void LoadGroups()
+        {
             using (UniversityContext db = new UniversityContext())
             {
                 var groups = db.GroupStudents.Where(g => g.IdSpeciality == Parent.IdSpeciality).ToList();
@@ -64,6 +69,8 @@ namespace CourseWork
 
         private void labelGr_Click(object sender, EventArgs e)
         {
+            Label label = sender as Label;
+            Parent.IdGroup = int.Parse(label.Name);
             Parent.Controls.Remove(this);
 
             Students students = new Students(Parent);

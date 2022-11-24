@@ -29,9 +29,7 @@ namespace CourseWork
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewTeachers = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button_Back = new System.Windows.Forms.Button();
+            this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
             this.Surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Firstname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Middlename = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,18 +39,20 @@ namespace CourseWork
             this.AmountChildren = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudyForm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountScholarship = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_Back = new System.Windows.Forms.Button();
             this.buttonGrade = new System.Windows.Forms.Button();
             this.buttonDisciplines = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeachers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewTeachers
+            // dataGridViewStudents
             // 
-            this.dataGridViewTeachers.AllowUserToAddRows = false;
-            this.dataGridViewTeachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewTeachers.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridViewTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTeachers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewStudents.AllowUserToAddRows = false;
+            this.dataGridViewStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewStudents.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Surname,
             this.Firstname,
             this.Middlename,
@@ -62,36 +62,12 @@ namespace CourseWork
             this.AmountChildren,
             this.StudyForm,
             this.AmountScholarship});
-            this.dataGridViewTeachers.Location = new System.Drawing.Point(0, 87);
-            this.dataGridViewTeachers.Name = "dataGridViewTeachers";
-            this.dataGridViewTeachers.RowHeadersWidth = 51;
-            this.dataGridViewTeachers.RowTemplate.Height = 29;
-            this.dataGridViewTeachers.Size = new System.Drawing.Size(928, 536);
-            this.dataGridViewTeachers.TabIndex = 16;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(22, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 45);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "СТУДЕНТЫ";
-            // 
-            // button_Back
-            // 
-            this.button_Back.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button_Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Back.Font = new System.Drawing.Font("Calibri Light", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.button_Back.ForeColor = System.Drawing.Color.White;
-            this.button_Back.Location = new System.Drawing.Point(793, 17);
-            this.button_Back.Name = "button_Back";
-            this.button_Back.Size = new System.Drawing.Size(120, 50);
-            this.button_Back.TabIndex = 17;
-            this.button_Back.Text = "Назад";
-            this.button_Back.UseVisualStyleBackColor = false;
-            this.button_Back.Click += new System.EventHandler(this.button_Back_Click);
+            this.dataGridViewStudents.Location = new System.Drawing.Point(0, 87);
+            this.dataGridViewStudents.Name = "dataGridViewStudents";
+            this.dataGridViewStudents.RowHeadersWidth = 51;
+            this.dataGridViewStudents.RowTemplate.Height = 29;
+            this.dataGridViewStudents.Size = new System.Drawing.Size(928, 536);
+            this.dataGridViewStudents.TabIndex = 16;
             // 
             // Surname
             // 
@@ -156,6 +132,30 @@ namespace CourseWork
             this.AmountScholarship.Name = "AmountScholarship";
             this.AmountScholarship.ReadOnly = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(22, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(196, 45);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "СТУДЕНТЫ";
+            // 
+            // button_Back
+            // 
+            this.button_Back.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button_Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Back.Font = new System.Drawing.Font("Calibri Light", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.button_Back.ForeColor = System.Drawing.Color.White;
+            this.button_Back.Location = new System.Drawing.Point(793, 17);
+            this.button_Back.Name = "button_Back";
+            this.button_Back.Size = new System.Drawing.Size(120, 50);
+            this.button_Back.TabIndex = 17;
+            this.button_Back.Text = "Назад";
+            this.button_Back.UseVisualStyleBackColor = false;
+            this.button_Back.Click += new System.EventHandler(this.button_Back_Click);
+            // 
             // buttonGrade
             // 
             this.buttonGrade.BackColor = System.Drawing.SystemColors.HotTrack;
@@ -188,12 +188,12 @@ namespace CourseWork
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonDisciplines);
             this.Controls.Add(this.buttonGrade);
-            this.Controls.Add(this.dataGridViewTeachers);
+            this.Controls.Add(this.dataGridViewStudents);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_Back);
             this.Name = "Students";
             this.Size = new System.Drawing.Size(928, 700);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeachers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,7 +201,7 @@ namespace CourseWork
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewTeachers;
+        private System.Windows.Forms.DataGridView dataGridViewStudents;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_Back;
         private System.Windows.Forms.DataGridViewTextBoxColumn Surname;

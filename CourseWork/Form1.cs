@@ -17,6 +17,7 @@ namespace CourseWork
         public int itemMenu1 = 1;
         public int IdFacult = 1;
         public int IdSpeciality = 1;
+        public int IdGroup = 1;
         public Form1()
         {
             InitializeComponent();
