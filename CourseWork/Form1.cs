@@ -18,6 +18,7 @@ namespace CourseWork
         public int IdFacult = 1;
         public int IdSpeciality = 1;
         public int IdGroup = 1;
+        public int IdDepartnemt = 1;
         public Form1()
         {
             InitializeComponent();
@@ -143,7 +144,7 @@ namespace CourseWork
                 ChildElem = specialties;
             }
 
-            if (myType.Name != nameof(Departments) && itemMenu1 == 3)
+            if (itemMenu1 == 3)
             {
                 this.Controls.Remove(ChildElem);
 

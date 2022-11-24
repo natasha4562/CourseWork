@@ -31,7 +31,7 @@ namespace CourseWork
         {
             this.label1 = new System.Windows.Forms.Label();
             this.button_Back = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTeachers = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,6 +44,14 @@ namespace CourseWork
             this.label11 = new System.Windows.Forms.Label();
             this.buttonDisciplines = new System.Windows.Forms.Button();
             this.buttonDiploma = new System.Windows.Forms.Button();
+            this.labelSurname = new System.Windows.Forms.Label();
+            this.labelFirstName = new System.Windows.Forms.Label();
+            this.labelPatronymic = new System.Windows.Forms.Label();
+            this.labelPost = new System.Windows.Forms.Label();
+            this.labelGender = new System.Windows.Forms.Label();
+            this.labelBirthdate = new System.Windows.Forms.Label();
+            this.labelAmountChildren = new System.Windows.Forms.Label();
+            this.labelSalary = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -70,14 +78,16 @@ namespace CourseWork
             this.button_Back.UseVisualStyleBackColor = false;
             this.button_Back.Click += new System.EventHandler(this.button_Back_Click);
             // 
-            // comboBox1
+            // comboBoxTeachers
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(22, 161);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(312, 39);
-            this.comboBox1.TabIndex = 16;
+            this.comboBoxTeachers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTeachers.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxTeachers.FormattingEnabled = true;
+            this.comboBoxTeachers.Location = new System.Drawing.Point(22, 161);
+            this.comboBoxTeachers.Name = "comboBoxTeachers";
+            this.comboBoxTeachers.Size = new System.Drawing.Size(375, 39);
+            this.comboBoxTeachers.TabIndex = 16;
+            this.comboBoxTeachers.SelectedIndexChanged += new System.EventHandler(this.comboBoxTeachers_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -205,10 +215,98 @@ namespace CourseWork
             this.buttonDiploma.Text = "Дипломные работы";
             this.buttonDiploma.UseVisualStyleBackColor = false;
             // 
+            // labelSurname
+            // 
+            this.labelSurname.AutoSize = true;
+            this.labelSurname.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelSurname.Location = new System.Drawing.Point(544, 96);
+            this.labelSurname.Name = "labelSurname";
+            this.labelSurname.Size = new System.Drawing.Size(161, 31);
+            this.labelSurname.TabIndex = 29;
+            this.labelSurname.Text = "labelSurname";
+            // 
+            // labelFirstName
+            // 
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelFirstName.Location = new System.Drawing.Point(489, 140);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(176, 31);
+            this.labelFirstName.TabIndex = 30;
+            this.labelFirstName.Text = "labelFirstName";
+            // 
+            // labelPatronymic
+            // 
+            this.labelPatronymic.AutoSize = true;
+            this.labelPatronymic.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPatronymic.Location = new System.Drawing.Point(538, 181);
+            this.labelPatronymic.Name = "labelPatronymic";
+            this.labelPatronymic.Size = new System.Drawing.Size(188, 31);
+            this.labelPatronymic.TabIndex = 31;
+            this.labelPatronymic.Text = "labelPatronymic";
+            // 
+            // labelPost
+            // 
+            this.labelPost.AutoSize = true;
+            this.labelPost.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPost.Location = new System.Drawing.Point(568, 221);
+            this.labelPost.Name = "labelPost";
+            this.labelPost.Size = new System.Drawing.Size(112, 31);
+            this.labelPost.TabIndex = 32;
+            this.labelPost.Text = "labelPost";
+            // 
+            // labelGender
+            // 
+            this.labelGender.AutoSize = true;
+            this.labelGender.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelGender.Location = new System.Drawing.Point(489, 266);
+            this.labelGender.Name = "labelGender";
+            this.labelGender.Size = new System.Drawing.Size(143, 31);
+            this.labelGender.TabIndex = 33;
+            this.labelGender.Text = "labelGender";
+            // 
+            // labelBirthdate
+            // 
+            this.labelBirthdate.AutoSize = true;
+            this.labelBirthdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelBirthdate.Location = new System.Drawing.Point(613, 307);
+            this.labelBirthdate.Name = "labelBirthdate";
+            this.labelBirthdate.Size = new System.Drawing.Size(168, 31);
+            this.labelBirthdate.TabIndex = 34;
+            this.labelBirthdate.Text = "labelBirthdate";
+            // 
+            // labelAmountChildren
+            // 
+            this.labelAmountChildren.AutoSize = true;
+            this.labelAmountChildren.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelAmountChildren.Location = new System.Drawing.Point(639, 349);
+            this.labelAmountChildren.Name = "labelAmountChildren";
+            this.labelAmountChildren.Size = new System.Drawing.Size(245, 31);
+            this.labelAmountChildren.TabIndex = 35;
+            this.labelAmountChildren.Text = "labelAmountChildren";
+            // 
+            // labelSalary
+            // 
+            this.labelSalary.AutoSize = true;
+            this.labelSalary.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelSalary.Location = new System.Drawing.Point(634, 393);
+            this.labelSalary.Name = "labelSalary";
+            this.labelSalary.Size = new System.Drawing.Size(132, 31);
+            this.labelSalary.TabIndex = 36;
+            this.labelSalary.Text = "labelSalary";
+            // 
             // TeachersInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelSalary);
+            this.Controls.Add(this.labelAmountChildren);
+            this.Controls.Add(this.labelBirthdate);
+            this.Controls.Add(this.labelGender);
+            this.Controls.Add(this.labelPost);
+            this.Controls.Add(this.labelPatronymic);
+            this.Controls.Add(this.labelFirstName);
+            this.Controls.Add(this.labelSurname);
             this.Controls.Add(this.buttonDiploma);
             this.Controls.Add(this.buttonDisciplines);
             this.Controls.Add(this.label11);
@@ -221,7 +319,7 @@ namespace CourseWork
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxTeachers);
             this.Controls.Add(this.button_Back);
             this.Controls.Add(this.label1);
             this.Name = "TeachersInfo";
@@ -235,7 +333,7 @@ namespace CourseWork
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_Back;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxTeachers;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -248,5 +346,13 @@ namespace CourseWork
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button buttonDisciplines;
         private System.Windows.Forms.Button buttonDiploma;
+        private System.Windows.Forms.Label labelSurname;
+        private System.Windows.Forms.Label labelFirstName;
+        private System.Windows.Forms.Label labelPatronymic;
+        private System.Windows.Forms.Label labelPost;
+        private System.Windows.Forms.Label labelGender;
+        private System.Windows.Forms.Label labelBirthdate;
+        private System.Windows.Forms.Label labelAmountChildren;
+        private System.Windows.Forms.Label labelSalary;
     }
 }

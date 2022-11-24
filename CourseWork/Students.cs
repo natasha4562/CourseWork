@@ -27,7 +27,7 @@ namespace CourseWork
                 for (int i = 0; i < students.Count; i++)
                 {
                     dataGridViewStudents.Rows.Add(students[i].Surname, students[i].FirstName, students[i].Patronymic, students[i].CreditBookNumber, students[i].Gender,
-                        students[i].Birthdate, students[i].AmountChildren, db.StudyForms.FirstOrDefault(s => s.Id == students[i].IdStudyForm).Name, students[i].AmountScholarship);
+                        students[i].Birthdate.Value.ToString("dd.MM.yyyy"), students[i].AmountChildren, db.StudyForms.FirstOrDefault(s => s.Id == students[i].IdStudyForm).Name, students[i].AmountScholarship);
                 }
             }
         }
