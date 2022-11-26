@@ -44,6 +44,8 @@ namespace CourseWork
 
         private void LoadFaculties()
         {
+            panelMenuF.Controls.Clear();
+
             using (UniversityContext db = new UniversityContext())
             {
                 var facults = db.Faculties.ToList();
@@ -69,6 +71,7 @@ namespace CourseWork
 
         private void itemsMenu1GrStudents_Click(object sender, EventArgs e)
         {
+            LoadFaculties();
             InitializeId();
             Type myType = ChildElem.GetType();
             if (myType.Name != nameof(GraduateStudents))
@@ -85,6 +88,7 @@ namespace CourseWork
 
         private void itemsMenu1Department_Click(object sender, EventArgs e)
         {
+            LoadFaculties();
             InitializeId();
             Type myType = ChildElem.GetType();
             if (myType.Name != nameof(Departments))
@@ -101,6 +105,7 @@ namespace CourseWork
 
         private void itemsMenu1Students_Click(object sender, EventArgs e)
         {
+            LoadFaculties();
             InitializeId();
             Type myType = ChildElem.GetType();
             if (myType.Name != nameof(Specialties))
@@ -117,6 +122,7 @@ namespace CourseWork
 
         private void itemsMenu1Faculties_Click(object sender, EventArgs e)
         {
+            LoadFaculties();
             InitializeId();
             Type myType = ChildElem.GetType();
 
@@ -205,8 +211,6 @@ namespace CourseWork
                 faculties_1.Location = new Point(250, 49);
                 this.Controls.Add(faculties_1);
                 ChildElem = faculties_1;
-                itemMenu1 = 1;
-                IdFacult = 1;
             }
         }
     }

@@ -56,7 +56,7 @@ namespace CourseWork
         {
             Parent.Controls.Remove(this);
 
-            GrWork grWork = new GrWork(Parent);
+            GrWork grWork = new GrWork(Parent, 2);
             grWork.Location = new Point(250, 49);
             Parent.Controls.Add(grWork);
             Parent.ChildElem = grWork;
