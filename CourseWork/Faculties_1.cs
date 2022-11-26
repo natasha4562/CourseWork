@@ -61,20 +61,20 @@ namespace CourseWork
         {
             Parent.Controls.Remove(this);
 
-            Specialties specialties = new Specialties(Parent);
-            specialties.Location = new Point(250, 49);
-            Parent.Controls.Add(specialties);
-            Parent.ChildElem = specialties;
+            DepOrSpec depOrSpec = new DepOrSpec(Parent, 2);
+            depOrSpec.Location = new Point(250, 49);
+            Parent.Controls.Add(depOrSpec);
+            Parent.ChildElem = depOrSpec;
         }
 
         private void labelDepartments_Click(object sender, EventArgs e)
         {
             Parent.Controls.Remove(this);
 
-            Departments departments = new Departments(Parent);
-            departments.Location = new Point(250, 49);
-            Parent.Controls.Add(departments);
-            Parent.ChildElem = departments;
+            DepOrSpec depOrSpec = new DepOrSpec(Parent, 1);
+            depOrSpec.Location = new Point(250, 49);
+            Parent.Controls.Add(depOrSpec);
+            Parent.ChildElem = depOrSpec;
         }
     }
 }
