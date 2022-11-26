@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWork.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,7 @@ namespace CourseWork
         public Form1()
         {
             InitializeComponent();
+
             Faculties_1 faculties_1 = new Faculties_1(this);
             faculties_1.Location = new Point(250, 49);
             this.Controls.Add(faculties_1);
@@ -175,6 +177,23 @@ namespace CourseWork
         {
             Label label = sender as Label;
             label.Font = new Font(label.Font, FontStyle.Regular);
+        }
+
+        private void toolStripMenuItemQueries_Click(object sender, EventArgs e)
+        {
+            Type myType = ChildElem.GetType();
+
+            if (myType.Name != nameof(MainControlForFunctions))
+            {
+                this.Controls.Remove(ChildElem);
+
+                MainControlForFunctions faculties_1 = new MainControlForFunctions(this, this.panelMenuF);
+                faculties_1.Location = new Point(250, 49);
+                this.Controls.Add(faculties_1);
+                ChildElem = faculties_1;
+                itemMenu1 = 1;
+                IdFacult = 1;
+            }
         }
     }
 }

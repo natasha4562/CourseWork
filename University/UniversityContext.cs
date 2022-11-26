@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using University.Functions;
 
 #nullable disable
 
@@ -40,17 +42,112 @@ namespace University
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<TypeOccupation> TypeOccupations { get; set; }
 
+        public virtual DbSet<CountStudentsInGroup> GetCountsStudentsInGroup { get; set; }
+        public virtual DbSet<CountGraduateStudentsWithDissertation> GetCountsGraduateStudentsWithDissertation { get; set; }
+
+        #region function 
+
+
+        public int GetCountStudentsInGroup(int GroupId, string StudentGender, DateTime StudentYearOfBirthdate,
+            int MinAge, int AmountChildren, int IdStudyForm, int MinAmountScholarship)
+        {
+            return this.GetCountsStudentsInGroup.FromSqlInterpolated($"select * from dbo.GetCountStudentsInGroup ({GroupId}, {StudentGender}, {StudentYearOfBirthdate},{MinAge}, {AmountChildren}, {IdStudyForm}, {MinAmountScholarship}) as CountStudents").FirstOrDefault().CountStudents;
+        }
+
+        public int GetCountGraduateStudentsWithDissertation(int IdDepartment, string Gender, DateTime MinBirthdate,
+            int MaxAge, int AmountChldren, int MinSalary)
+        {
+            return this.GetCountsGraduateStudentsWithDissertation.FromSqlInterpolated($"select * from dbo.GetCountGraduateStudentsWithDissertation ({IdDepartment}, {Gender}, {MinBirthdate},{MaxAge}, {AmountChldren}, {MinSalary}) as CountStudents").FirstOrDefault().CountTeachers;
+        }
+
+        public IQueryable<StudentsDto> GetStudentInGroup(int GroupId, string StudentGender, DateTime StudentYearOfBirthdate,
+            int MinAge, int AmountChildren, int IdStudyForm, int MinAmountScholarship) => FromExpression(() => 
+                    GetStudentInGroup(GroupId, StudentGender, StudentYearOfBirthdate,
+                        MinAge, AmountChildren, IdStudyForm, MinAmountScholarship)); //1
+
+        public IQueryable<StudentsDto> GetGraduateStudentsWithDissertation(int IdDepartment, string Gender, DateTime MinBirthdate,
+            int  MaxAge, int AmountChldren, int MinSalary) => FromExpression(() =>
+                    GetGraduateStudentsWithDissertation(IdDepartment, Gender, MinBirthdate, MaxAge, AmountChldren, MinSalary)); //2
+                                                                                                                                
+        //public int GetCountGraduateStudentsWithDissertation(int IdDepartment, string Gender, DateTime MinBirthdate,
+        //    int  MaxAge, int AmountChldren, int MinSalary) => 
+        //            GetCountGraduateStudentsWithDissertation(IdDepartment, Gender, MinBirthdate, MaxAge, AmountChldren, MinSalary); //2
+
+        public IQueryable<DepartmentDto> GetDissertation(int IdDepartment) => FromExpression(() =>
+                  GetDissertation(IdDepartment)); //3
+
+        public IQueryable<DepartmentDto> GetDepartment(int IdGroupStudents, int semester) => FromExpression(() =>
+                  GetDepartment(IdGroupStudents, semester)); //4
+
+        public IQueryable<StudentsDto> GetTeachersStudiesGroup(int IdGroupStudents, int IdSubject) => FromExpression(() =>
+                  GetTeachersStudiesGroup(IdGroupStudents, IdSubject)); //5
+
+        public IQueryable<StudentsDto> GetTeachersStudiesGroupInSem(int IdGroupStudents, int IdSubject) => FromExpression(() =>
+                  GetTeachersStudiesGroupInSem(IdGroupStudents, IdSubject)); //6
+
+        public IQueryable<StudentsDto> GetStudentsPassExamWithMark(int IdSubject, int @IdMark) => FromExpression(() =>
+                  GetStudentsPassExamWithMark(IdSubject, @IdMark)); //7
+
+        public IQueryable<StudentsDto> GetStudentsPassExamsGood(int IdGroupStudents) => FromExpression(() =>
+                  GetStudentsPassExamsGood(IdGroupStudents)); //8
+
+        public IQueryable<StudentsDto> GetTeachersExam(int IdGroupStudents, int IdSubject, int Semester) => FromExpression(() =>
+                  GetTeachersExam(IdGroupStudents, IdSubject, Semester)); //9
+
+        public IQueryable<StudentsDto> GetStudentsWithMarkExam(int IdGroupStudents, int IdSubject, int Mark, int Semester) => FromExpression(() =>
+                  GetStudentsWithMarkExam(IdGroupStudents, IdSubject, Mark, Semester)); //10
+
+        public IQueryable<StudentsWithGrWork> GetStudentsWithGrWorkInTeacher(int IdTeacher) => FromExpression(() =>
+                 GetStudentsWithGrWorkInTeacher(IdTeacher)); //11
+                                                             
+        public IQueryable<StudentsDto> GetTeachersWithGrWork(int IdTeacher) => FromExpression(() =>
+                 GetTeachersWithGrWork(IdTeacher)); //12
+
+        public IQueryable<TeacherSubject> GetTeachersWorkload(int age) => FromExpression(() => 
+                GetTeachersWorkload(age)); // 13
+        
+        #endregion
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=LAPTOP-U48V0IAA\\SQLEXPRESS;Database=University;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=University;Trusted_Connection=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.HasDbFunction(() => GetCountStudentsInGroup(default, default, default, default, default, default, default));//1
+
+            modelBuilder.HasDbFunction(() => GetGraduateStudentsWithDissertation(default, default, default, default, default, default));
+            //modelBuilder.HasDbFunction(() => GetCountGraduateStudentsWithDissertation(default, default, default, default, default, default));//2
+
+            modelBuilder.HasDbFunction(() => GetDissertation(default));//3
+
+            modelBuilder.HasDbFunction(() => GetDepartment(default, default));//4
+
+            modelBuilder.HasDbFunction(() => GetTeachersStudiesGroup(default, default));//5
+
+            modelBuilder.HasDbFunction(() => GetTeachersStudiesGroupInSem(default, default));//6
+
+            modelBuilder.HasDbFunction(() => GetStudentsPassExamWithMark(default, default));//7
+
+            modelBuilder.HasDbFunction(() => GetStudentsPassExamsGood(default));//8
+
+            modelBuilder.HasDbFunction(() => GetTeachersExam(default, default, default));//9
+
+            modelBuilder.HasDbFunction(() => GetStudentsWithMarkExam(default, default, default, default));//10
+
+            modelBuilder.HasDbFunction(() => GetStudentsWithGrWorkInTeacher(default));//11
+
+            modelBuilder.HasDbFunction(() => GetTeachersWithGrWork(default));//12
+
+            modelBuilder.HasDbFunction(() => GetTeachersWorkload(default));//13
+
+            modelBuilder.HasDbFunction(() => GetStudentInGroup(default, default, default, default, default, default, default));
+
             modelBuilder.Entity<Dean>(entity =>
             {
                 entity.ToTable("Dean");

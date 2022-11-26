@@ -29,12 +29,15 @@ namespace CourseWork
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuFaculties = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuStudents = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuTeachers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGrStudents = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemQueries = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenuF = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +50,8 @@ namespace CourseWork
             this.toolStripMenuFaculties,
             this.toolStripMenuStudents,
             this.toolStripMenuTeachers,
-            this.toolStripMenuItemGrStudents});
+            this.toolStripMenuItemGrStudents,
+            this.toolStripMenuItemQueries});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1178, 49);
@@ -88,6 +92,14 @@ namespace CourseWork
             this.toolStripMenuItemGrStudents.Text = "Аспирантам";
             this.toolStripMenuItemGrStudents.Click += new System.EventHandler(this.itemsMenu1GrStudents_Click);
             // 
+            // toolStripMenuItemQueries
+            // 
+            this.toolStripMenuItemQueries.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItemQueries.Name = "toolStripMenuItemQueries";
+            this.toolStripMenuItemQueries.Size = new System.Drawing.Size(151, 45);
+            this.toolStripMenuItemQueries.Text = "Запросы";
+            this.toolStripMenuItemQueries.Click += new System.EventHandler(this.toolStripMenuItemQueries_Click);
+            // 
             // panelMenuF
             // 
             this.panelMenuF.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -95,6 +107,12 @@ namespace CourseWork
             this.panelMenuF.Name = "panelMenuF";
             this.panelMenuF.Size = new System.Drawing.Size(250, 700);
             this.panelMenuF.TabIndex = 2;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 
@@ -125,6 +143,8 @@ namespace CourseWork
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuTeachers;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGrStudents;
         private System.Windows.Forms.Panel panelMenuF;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemQueries;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 
