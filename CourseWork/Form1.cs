@@ -55,8 +55,18 @@ namespace CourseWork
             }
         }
 
+        private void updateNum()
+        {
+            itemMenu1 = 1;
+            IdFacult = 1;
+            IdSpeciality = 1;
+            IdGroup = 1;
+            IdDepartnemt = 1;
+        }
+
         private void itemsMenu1GrStudents_Click(object sender, EventArgs e)
         {
+            updateNum();
             Type myType = ChildElem.GetType();
             if (myType.Name != nameof(GraduateStudents))
             {
@@ -72,6 +82,7 @@ namespace CourseWork
 
         private void itemsMenu1Department_Click(object sender, EventArgs e)
         {
+            updateNum();
             Type myType = ChildElem.GetType();
             if (myType.Name != nameof(Departments))
             {
@@ -87,6 +98,7 @@ namespace CourseWork
 
         private void itemsMenu1Students_Click(object sender, EventArgs e)
         {
+            updateNum();
             Type myType = ChildElem.GetType();
             if (myType.Name != nameof(Specialties))
             {
@@ -102,6 +114,7 @@ namespace CourseWork
 
         private void itemsMenu1Faculties_Click(object sender, EventArgs e)
         {
+            updateNum();
             Type myType = ChildElem.GetType();
 
             if (myType.Name != nameof(Faculties_1))
