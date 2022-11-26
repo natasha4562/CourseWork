@@ -69,6 +69,10 @@ namespace University
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Picture)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Salary).HasColumnType("decimal(7, 2)");
 
                 entity.Property(e => e.Surname)

@@ -16,6 +16,7 @@ namespace University
         public int? AmountChildren { get; set; }
         public decimal? Salary { get; set; }
         public int? IdFaculty { get; set; }
+        public string Picture { get; set; }
 
         public virtual Faculty IdFacultyNavigation { get; set; }
     }

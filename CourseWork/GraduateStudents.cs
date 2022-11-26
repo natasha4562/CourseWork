@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using University;
 
 namespace CourseWork
 {
@@ -17,6 +18,21 @@ namespace CourseWork
         {
             InitializeComponent();
             Parent = f;
+            LoadGrStudents();
+        }
+
+        void LoadGrStudents()
+        {
+            using (UniversityContext db = new UniversityContext())
+            {
+                var teachs = db.GraduateSchools.Select(g => g.IdTeacherNavigation).ToList();
+
+                for (int i = 0; i < teachs.Count; i++)
+                {
+                    dataGridViewTeachers.Rows.Add(teachs[i].Surname, teachs[i].FirstName, teachs[i].Patronymic, db.Posts.Where(p => p.Id == teachs[i].IdPost).FirstOrDefault().Name, teachs[i].Gender,
+                        teachs[i].Birthdate.Value.ToString("dd.MM.yyyy"), teachs[i].AmountChildren, teachs[i].Salary);
+                }
+            }
         }
     }
 }
