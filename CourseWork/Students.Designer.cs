@@ -181,6 +181,7 @@ namespace CourseWork
             this.buttonDisciplines.TabIndex = 19;
             this.buttonDisciplines.Text = "Изучаемые дисциплины";
             this.buttonDisciplines.UseVisualStyleBackColor = false;
+            this.buttonDisciplines.Click += new System.EventHandler(this.buttonDisciplines_Click);
             // 
             // Students
             // 

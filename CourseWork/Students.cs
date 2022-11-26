@@ -41,5 +41,15 @@ namespace CourseWork
             Parent.Controls.Add(groups);
             Parent.ChildElem = groups;
         }
+
+        private void buttonDisciplines_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            Subjects subject = new Subjects(Parent, 0, 2);
+            subject.Location = new Point(250, 49);
+            Parent.Controls.Add(subject);
+            Parent.ChildElem = subject;
+        }
     }
 }
