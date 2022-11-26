@@ -14,20 +14,30 @@ namespace CourseWork
     public partial class Form1 : Form
     {
         public UserControl ChildElem;
-        public int itemMenu1 = 1;
-        public int IdFacult = 1;
-        public int IdSpeciality = 1;
-        public int IdGroup = 1;
-        public int IdDepartnemt = 1;
+        public int itemMenu1, IdFacult, IdSpeciality, IdGroup, IdDepartnemt;
         public Form1()
         {
             InitializeComponent();
+            InitializeId();
+
             Faculties_1 faculties_1 = new Faculties_1(this);
             faculties_1.Location = new Point(250, 49);
             this.Controls.Add(faculties_1);
             ChildElem = faculties_1;
-
+            
             LoadFaculties();
+        }
+
+        private void InitializeId()
+        {
+            using(UniversityContext db = new UniversityContext())
+            {
+                itemMenu1 = 1;
+                IdFacult = db.Faculties.First().Id;
+                IdSpeciality = db.Specialities.First().Id;
+                IdGroup = db.GroupStudents.First().Id;
+                IdDepartnemt = db.Departments.First().Id;
+            }
         }
 
         private void LoadFaculties()
@@ -55,18 +65,9 @@ namespace CourseWork
             }
         }
 
-        private void updateNum()
-        {
-            itemMenu1 = 1;
-            IdFacult = 1;
-            IdSpeciality = 1;
-            IdGroup = 1;
-            IdDepartnemt = 1;
-        }
-
         private void itemsMenu1GrStudents_Click(object sender, EventArgs e)
         {
-            updateNum();
+            InitializeId();
             Type myType = ChildElem.GetType();
             if (myType.Name != nameof(GraduateStudents))
             {
@@ -82,7 +83,7 @@ namespace CourseWork
 
         private void itemsMenu1Department_Click(object sender, EventArgs e)
         {
-            updateNum();
+            InitializeId();
             Type myType = ChildElem.GetType();
             if (myType.Name != nameof(Departments))
             {
@@ -98,7 +99,7 @@ namespace CourseWork
 
         private void itemsMenu1Students_Click(object sender, EventArgs e)
         {
-            updateNum();
+            InitializeId();
             Type myType = ChildElem.GetType();
             if (myType.Name != nameof(Specialties))
             {
@@ -114,7 +115,7 @@ namespace CourseWork
 
         private void itemsMenu1Faculties_Click(object sender, EventArgs e)
         {
-            updateNum();
+            InitializeId();
             Type myType = ChildElem.GetType();
 
             if (myType.Name != nameof(Faculties_1))
@@ -167,7 +168,7 @@ namespace CourseWork
                 ChildElem = departments;
             }
 
-            if (myType.Name != nameof(GraduateStudents) && itemMenu1 == 4)
+            if (itemMenu1 == 4)
             {
                 this.Controls.Remove(ChildElem);
 

@@ -25,7 +25,8 @@ namespace CourseWork
         {
             using (UniversityContext db = new UniversityContext())
             {
-                var teachs = db.GraduateSchools.Select(g => g.IdTeacherNavigation).ToList();
+                var d = db.Departments.Where(d => d.IdFaculty == Parent.IdFacult).Select(d => d.Id).ToList();
+                var teachs = db.GraduateSchools.Select(g => g.IdTeacherNavigation).Where(g => d.Contains(g.IdDepartment ?? 0)).ToList();
 
                 for (int i = 0; i < teachs.Count; i++)
                 {

@@ -14,6 +14,7 @@ namespace CourseWork
     public partial class TeachersInfo : UserControl
     {
         public Form1 Parent { get; set; }
+        private List<int> idTeachers = new List<int>();
         public TeachersInfo(Form1 f)
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace CourseWork
                     for (int i = 0; i < teachers.Count; i++)
                     {
                         comboBoxTeachers.Items.Add(teachers[i].Surname + " " + teachers[i].FirstName + " " + teachers[i].Patronymic);
+                        idTeachers.Add(teachers[i].Id);
                     }
                     comboBoxTeachers.SelectedIndex = 0;
                 }
@@ -70,8 +72,7 @@ namespace CourseWork
         private void buttonDisciplines_Click(object sender, EventArgs e)
         {
             Parent.Controls.Remove(this);
-
-            Subjects subject = new Subjects(Parent);
+            Subjects subject = new Subjects(Parent, idTeachers[comboBoxTeachers.SelectedIndex]);
             subject.Location = new Point(250, 49);
             Parent.Controls.Add(subject);
             Parent.ChildElem = subject;
