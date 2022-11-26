@@ -30,7 +30,7 @@ namespace CourseWork
                 if (dean != null)
                 {
                     labelFIO.Text = dean.Surname + " " + dean.FirstName + " " + dean.Patronymic;
-
+                    pictureBox1.Image = Image.FromFile("D:\\7 семестр\\БД\\CourseWork\\Pictures\\" + dean.Picture);
                 }
             }
         }
