@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWork.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using University;
+using University.Functions;
 
 namespace CourseWork
 {
