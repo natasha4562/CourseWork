@@ -217,6 +217,7 @@ namespace CourseWork
             this.buttonDiploma.TabIndex = 28;
             this.buttonDiploma.Text = "Дипломные работы";
             this.buttonDiploma.UseVisualStyleBackColor = false;
+            this.buttonDiploma.Click += new System.EventHandler(this.buttonDiploma_Click);
             // 
             // labelSurname
             // 

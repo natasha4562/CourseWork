@@ -51,5 +51,15 @@ namespace CourseWork
             Parent.Controls.Add(subject);
             Parent.ChildElem = subject;
         }
+
+        private void buttonDiploma_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            GrWork grWork = new GrWork(Parent);
+            grWork.Location = new Point(250, 49);
+            Parent.Controls.Add(grWork);
+            Parent.ChildElem = grWork;
+        }
     }
 }

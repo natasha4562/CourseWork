@@ -66,6 +66,8 @@ namespace CourseWork
                 labelBirthdate.Text = teacherInfo.Birthdate.Value.ToString("dd.MM.yyyy");
                 labelAmountChildren.Text = teacherInfo.AmountChildren.ToString();
                 labelSalary.Text = teacherInfo.Salary.ToString();
+
+                Parent.IdTeacher = teacherInfo.Id;
             }
         }
 
@@ -77,6 +79,16 @@ namespace CourseWork
             subject.Location = new Point(250, 49);
             Parent.Controls.Add(subject);
             Parent.ChildElem = subject;
+        }
+
+        private void buttonDiploma_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            GrWork grWork = new GrWork(Parent);
+            grWork.Location = new Point(250, 49);
+            Parent.Controls.Add(grWork);
+            Parent.ChildElem = grWork;
         }
     }
 }

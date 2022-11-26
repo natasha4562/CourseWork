@@ -43,6 +43,7 @@ namespace CourseWork
             this.button_Back = new System.Windows.Forms.Button();
             this.buttonGrade = new System.Windows.Forms.Button();
             this.buttonDisciplines = new System.Windows.Forms.Button();
+            this.buttonDiploma = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,7 +163,7 @@ namespace CourseWork
             this.buttonGrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGrade.Font = new System.Drawing.Font("Calibri Light", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.buttonGrade.ForeColor = System.Drawing.Color.White;
-            this.buttonGrade.Location = new System.Drawing.Point(200, 638);
+            this.buttonGrade.Location = new System.Drawing.Point(12, 638);
             this.buttonGrade.Name = "buttonGrade";
             this.buttonGrade.Size = new System.Drawing.Size(216, 50);
             this.buttonGrade.TabIndex = 18;
@@ -175,7 +176,7 @@ namespace CourseWork
             this.buttonDisciplines.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDisciplines.Font = new System.Drawing.Font("Calibri Light", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.buttonDisciplines.ForeColor = System.Drawing.Color.White;
-            this.buttonDisciplines.Location = new System.Drawing.Point(439, 638);
+            this.buttonDisciplines.Location = new System.Drawing.Point(579, 638);
             this.buttonDisciplines.Name = "buttonDisciplines";
             this.buttonDisciplines.Size = new System.Drawing.Size(334, 50);
             this.buttonDisciplines.TabIndex = 19;
@@ -183,10 +184,25 @@ namespace CourseWork
             this.buttonDisciplines.UseVisualStyleBackColor = false;
             this.buttonDisciplines.Click += new System.EventHandler(this.buttonDisciplines_Click);
             // 
+            // buttonDiploma
+            // 
+            this.buttonDiploma.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonDiploma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDiploma.Font = new System.Drawing.Font("Calibri Light", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.buttonDiploma.ForeColor = System.Drawing.Color.White;
+            this.buttonDiploma.Location = new System.Drawing.Point(259, 638);
+            this.buttonDiploma.Name = "buttonDiploma";
+            this.buttonDiploma.Size = new System.Drawing.Size(296, 50);
+            this.buttonDiploma.TabIndex = 29;
+            this.buttonDiploma.Text = "Дипломные работы";
+            this.buttonDiploma.UseVisualStyleBackColor = false;
+            this.buttonDiploma.Click += new System.EventHandler(this.buttonDiploma_Click);
+            // 
             // Students
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonDiploma);
             this.Controls.Add(this.buttonDisciplines);
             this.Controls.Add(this.buttonGrade);
             this.Controls.Add(this.dataGridViewStudents);
@@ -216,5 +232,6 @@ namespace CourseWork
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountScholarship;
         private System.Windows.Forms.Button buttonGrade;
         private System.Windows.Forms.Button buttonDisciplines;
+        private System.Windows.Forms.Button buttonDiploma;
     }
 }

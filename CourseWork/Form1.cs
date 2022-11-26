@@ -14,7 +14,7 @@ namespace CourseWork
     public partial class Form1 : Form
     {
         public UserControl ChildElem;
-        public int itemMenu1, IdFacult, IdSpeciality, IdGroup, IdDepartnemt;
+        public int itemMenu1, IdFacult, IdSpeciality, IdGroup, IdDepartnemt, IdTeacher;
         public Form1()
         {
             InitializeComponent();
@@ -37,6 +37,7 @@ namespace CourseWork
                 IdSpeciality = db.Specialities.First().Id;
                 IdGroup = db.GroupStudents.First().Id;
                 IdDepartnemt = db.Departments.First().Id;
+                IdTeacher = db.Teachers.First().Id;
             }
         }
 
