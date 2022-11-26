@@ -29,16 +29,14 @@ namespace CourseWork
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewTeachers = new System.Windows.Forms.DataGridView();
             this.Surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Firstname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Middlename = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Post = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AmountChildren = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Salary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Department = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_Back = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeachers)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +55,7 @@ namespace CourseWork
             // 
             this.dataGridViewTeachers.AllowUserToAddRows = false;
             this.dataGridViewTeachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewTeachers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewTeachers.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridViewTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTeachers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -64,10 +63,15 @@ namespace CourseWork
             this.Firstname,
             this.Middlename,
             this.Post,
-            this.Gender,
-            this.DateOfBirth,
-            this.AmountChildren,
-            this.Salary});
+            this.Department});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTeachers.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTeachers.Location = new System.Drawing.Point(0, 87);
             this.dataGridViewTeachers.Name = "dataGridViewTeachers";
             this.dataGridViewTeachers.RowHeadersWidth = 51;
@@ -103,33 +107,12 @@ namespace CourseWork
             this.Post.Name = "Post";
             this.Post.ReadOnly = true;
             // 
-            // Gender
+            // Department
             // 
-            this.Gender.HeaderText = "Пол";
-            this.Gender.MinimumWidth = 6;
-            this.Gender.Name = "Gender";
-            this.Gender.ReadOnly = true;
-            // 
-            // DateOfBirth
-            // 
-            this.DateOfBirth.HeaderText = "Дата рождения";
-            this.DateOfBirth.MinimumWidth = 6;
-            this.DateOfBirth.Name = "DateOfBirth";
-            this.DateOfBirth.ReadOnly = true;
-            // 
-            // AmountChildren
-            // 
-            this.AmountChildren.HeaderText = "Количество детей";
-            this.AmountChildren.MinimumWidth = 6;
-            this.AmountChildren.Name = "AmountChildren";
-            this.AmountChildren.ReadOnly = true;
-            // 
-            // Salary
-            // 
-            this.Salary.HeaderText = "Заработная плата";
-            this.Salary.MinimumWidth = 6;
-            this.Salary.Name = "Salary";
-            this.Salary.ReadOnly = true;
+            this.Department.HeaderText = "Кафедра";
+            this.Department.MinimumWidth = 6;
+            this.Department.Name = "Department";
+            this.Department.ReadOnly = true;
             // 
             // button_Back
             // 
@@ -164,14 +147,11 @@ namespace CourseWork
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridViewTeachers;
+        private System.Windows.Forms.Button button_Back;
         private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Firstname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Middlename;
         private System.Windows.Forms.DataGridViewTextBoxColumn Post;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateOfBirth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AmountChildren;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Salary;
-        private System.Windows.Forms.Button button_Back;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Department;
     }
 }
