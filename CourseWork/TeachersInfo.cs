@@ -66,5 +66,15 @@ namespace CourseWork
                 labelSalary.Text = teacherInfo.Salary.ToString();
             }
         }
+
+        private void buttonDisciplines_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            Subjects subject = new Subjects(Parent);
+            subject.Location = new Point(250, 49);
+            Parent.Controls.Add(subject);
+            Parent.ChildElem = subject;
+        }
     }
 }

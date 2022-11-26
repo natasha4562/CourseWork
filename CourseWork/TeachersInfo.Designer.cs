@@ -83,7 +83,9 @@ namespace CourseWork
             this.comboBoxTeachers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTeachers.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxTeachers.FormattingEnabled = true;
+            this.comboBoxTeachers.IntegralHeight = false;
             this.comboBoxTeachers.Location = new System.Drawing.Point(22, 161);
+            this.comboBoxTeachers.MaxDropDownItems = 4;
             this.comboBoxTeachers.Name = "comboBoxTeachers";
             this.comboBoxTeachers.Size = new System.Drawing.Size(375, 39);
             this.comboBoxTeachers.TabIndex = 16;
@@ -201,6 +203,7 @@ namespace CourseWork
             this.buttonDisciplines.TabIndex = 27;
             this.buttonDisciplines.Text = "Преподаваемые дисциплины";
             this.buttonDisciplines.UseVisualStyleBackColor = false;
+            this.buttonDisciplines.Click += new System.EventHandler(this.buttonDisciplines_Click);
             // 
             // buttonDiploma
             // 
