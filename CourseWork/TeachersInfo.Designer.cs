@@ -52,6 +52,8 @@ namespace CourseWork
             this.labelBirthdate = new System.Windows.Forms.Label();
             this.labelAmountChildren = new System.Windows.Forms.Label();
             this.labelSalary = new System.Windows.Forms.Label();
+            this.buttonScience = new System.Windows.Forms.Button();
+            this.buttonDissertation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -299,10 +301,40 @@ namespace CourseWork
             this.labelSalary.TabIndex = 36;
             this.labelSalary.Text = "labelSalary";
             // 
+            // buttonScience
+            // 
+            this.buttonScience.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonScience.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonScience.Font = new System.Drawing.Font("Calibri Light", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.buttonScience.ForeColor = System.Drawing.Color.White;
+            this.buttonScience.Location = new System.Drawing.Point(276, 561);
+            this.buttonScience.Name = "buttonScience";
+            this.buttonScience.Size = new System.Drawing.Size(130, 50);
+            this.buttonScience.TabIndex = 37;
+            this.buttonScience.Text = "Наука";
+            this.buttonScience.UseVisualStyleBackColor = false;
+            this.buttonScience.Click += new System.EventHandler(this.buttonScience_Click);
+            // 
+            // buttonDissertation
+            // 
+            this.buttonDissertation.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonDissertation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDissertation.Font = new System.Drawing.Font("Calibri Light", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.buttonDissertation.ForeColor = System.Drawing.Color.White;
+            this.buttonDissertation.Location = new System.Drawing.Point(468, 561);
+            this.buttonDissertation.Name = "buttonDissertation";
+            this.buttonDissertation.Size = new System.Drawing.Size(237, 50);
+            this.buttonDissertation.TabIndex = 38;
+            this.buttonDissertation.Text = "Диссертации";
+            this.buttonDissertation.UseVisualStyleBackColor = false;
+            this.buttonDissertation.Click += new System.EventHandler(this.buttonDissertation_Click);
+            // 
             // TeachersInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonDissertation);
+            this.Controls.Add(this.buttonScience);
             this.Controls.Add(this.labelSalary);
             this.Controls.Add(this.labelAmountChildren);
             this.Controls.Add(this.labelBirthdate);
@@ -358,5 +390,7 @@ namespace CourseWork
         private System.Windows.Forms.Label labelBirthdate;
         private System.Windows.Forms.Label labelAmountChildren;
         private System.Windows.Forms.Label labelSalary;
+        private System.Windows.Forms.Button buttonScience;
+        private System.Windows.Forms.Button buttonDissertation;
     }
 }

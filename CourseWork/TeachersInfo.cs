@@ -35,7 +35,7 @@ namespace CourseWork
                         comboBoxTeachers.Items.Add(teachers[i].Surname + " " + teachers[i].FirstName + " " + teachers[i].Patronymic);
                         idTeachers.Add(teachers[i].Id);
                     }
-                    comboBoxTeachers.SelectedIndex = 0;
+                    comboBoxTeachers.SelectedIndex = idTeachers.IndexOf(Parent.IdTeacher);
                 }
             }
         }
@@ -89,6 +89,26 @@ namespace CourseWork
             grWork.Location = new Point(250, 49);
             Parent.Controls.Add(grWork);
             Parent.ChildElem = grWork;
+        }
+
+        private void buttonScience_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            Science science = new Science(Parent, 1);
+            science.Location = new Point(250, 49);
+            Parent.Controls.Add(science);
+            Parent.ChildElem = science;
+        }
+
+        private void buttonDissertation_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            Science science = new Science(Parent, 2);
+            science.Location = new Point(250, 49);
+            Parent.Controls.Add(science);
+            Parent.ChildElem = science;
         }
     }
 }

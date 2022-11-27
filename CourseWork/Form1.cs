@@ -38,7 +38,7 @@ namespace CourseWork
                 IdSpeciality = db.Specialities.First().Id;
                 IdGroup = db.GroupStudents.First().Id;
                 IdDepartnemt = db.Departments.First().Id;
-                IdTeacher = db.Teachers.First().Id;
+                IdTeacher = db.Teachers.OrderBy(t => t.Surname).First().Id;
             }
         }
 
