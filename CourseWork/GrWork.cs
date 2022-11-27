@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CourseWork.ControlsAdd;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,13 @@ namespace CourseWork
     {
         public Form1 Parent { get; set; }
         private int elemForm;
+        private List<int> listIdDrWorks = new List<int>();
         public GrWork(Form1 f, int _num)
         {
             InitializeComponent();
             Parent = f;
             elemForm = _num;
+            dataGridViewGrWork.ContextMenuStrip = contextMenuStrip1;
             LoadGrWork();
         }
 
@@ -37,6 +40,7 @@ namespace CourseWork
                         var st = db.Students.Where(s => s.Id == grworks[i].IdStudent).FirstOrDefault();
 
                         dataGridViewGrWork.Rows.Add(st.Surname + " " + st.FirstName + " " + st.Patronymic, teach.Surname + " " + teach.FirstName + " " + teach.Patronymic, grworks[i].Name);
+                        listIdDrWorks.Add(grworks[i].Id);
                     }
                 }
             }
@@ -50,6 +54,7 @@ namespace CourseWork
                     {
                         dataGridViewGrWork.Rows.Add(grworks[i].IdStudentNavigation.Surname + " " + grworks[i].IdStudentNavigation.FirstName + " " + grworks[i].IdStudentNavigation.Patronymic,
                             grworks[i].IdTeacherNavigation.Surname + " " + grworks[i].IdTeacherNavigation.FirstName + " " + grworks[i].IdTeacherNavigation.Patronymic, grworks[i].Name);
+                        listIdDrWorks.Add(grworks[i].Id);
                     }
                 }
             }                       
@@ -74,6 +79,44 @@ namespace CourseWork
                 students.Location = new Point(250, 49);
                 Parent.Controls.Add(students);
                 Parent.ChildElem = students;
+            }
+        }
+
+        private void toolStripMenuAdd_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            GraduateWorkAdd graduateWork = new GraduateWorkAdd(Parent);
+            graduateWork.Location = new Point(250, 49);
+            Parent.Controls.Add(graduateWork);
+            Parent.ChildElem = graduateWork;
+        }
+
+        private void toolStripMenuEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить данную запись?",
+                "Сообщение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+                using (UniversityContext db = new UniversityContext())
+                {
+                    int id = listIdDrWorks[dataGridViewGrWork.CurrentCell.RowIndex];
+
+                    db.GraduateWorks.Remove(db.GraduateWorks.Where(s => s.Id == id).FirstOrDefault());
+                    db.SaveChanges();
+
+                    dataGridViewGrWork.Rows.RemoveAt(listIdDrWorks.IndexOf(id));
+                    listIdDrWorks.RemoveAt(listIdDrWorks.IndexOf(id));
+                }
             }
         }
     }
