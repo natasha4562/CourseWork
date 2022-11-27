@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWork.ControlsAdd;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,12 @@ namespace CourseWork
     public partial class Students : UserControl
     {
         public Form1 Parent { get; set; }
+        private List<int> listIdStudents = new List<int>();
         public Students(Form1 f)
         {
             InitializeComponent();
             Parent = f;
+            dataGridViewStudents.ContextMenuStrip = contextMenuStrip1;
 
             using (UniversityContext db = new UniversityContext())
             {
@@ -28,6 +31,7 @@ namespace CourseWork
                 {
                     dataGridViewStudents.Rows.Add(students[i].Surname, students[i].FirstName, students[i].Patronymic, students[i].CreditBookNumber, students[i].Gender,
                         students[i].Birthdate.Value.ToString("dd.MM.yyyy"), students[i].AmountChildren, db.StudyForms.FirstOrDefault(s => s.Id == students[i].IdStudyForm).Name, students[i].AmountScholarship);
+                    listIdStudents.Add(students[i].Id);
                 }
             }
         }
@@ -70,6 +74,55 @@ namespace CourseWork
             mark.Location = new Point(250, 49);
             Parent.Controls.Add(mark);
             Parent.ChildElem = mark;
+        }
+
+        private void toolStripMenuAdd_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            StudentAdd student = new StudentAdd(Parent);
+            student.Location = new Point(250, 49);
+            Parent.Controls.Add(student);
+            Parent.ChildElem = student;            
+        }
+
+        private void toolStripMenuEdit_Click(object sender, EventArgs e)
+        {
+            using (UniversityContext db = new UniversityContext())
+            {
+                int id = listIdStudents[dataGridViewStudents.CurrentCell.RowIndex];
+                var st = db.Students.Where(s => s.Id == id).FirstOrDefault();
+
+                Parent.Controls.Remove(this);
+
+                StudentAdd student = new StudentAdd(Parent, st);
+                student.Location = new Point(250, 49);
+                Parent.Controls.Add(student);
+                Parent.ChildElem = student;
+            }
+        }
+
+        private void toolStripMenuDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить данную запись?",
+                "Сообщение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+                using (UniversityContext db = new UniversityContext())
+                {
+                    int id = listIdStudents[dataGridViewStudents.CurrentCell.RowIndex];
+
+                    db.Students.Remove(db.Students.Where(s => s.Id == id).FirstOrDefault());
+                    db.SaveChanges();
+
+                    dataGridViewStudents.Rows.RemoveAt(listIdStudents.IndexOf(id));
+                    listIdStudents.RemoveAt(listIdStudents.IndexOf(id));
+                }
+            }
         }
     }
 }
