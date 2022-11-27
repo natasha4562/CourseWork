@@ -95,7 +95,7 @@ namespace CourseWork
         {
             Parent.Controls.Remove(this);
 
-            Science science = new Science(Parent, 1);
+            Sciences science = new Sciences(Parent, 1);
             science.Location = new Point(250, 49);
             Parent.Controls.Add(science);
             Parent.ChildElem = science;
@@ -105,7 +105,7 @@ namespace CourseWork
         {
             Parent.Controls.Remove(this);
 
-            Science science = new Science(Parent, 2);
+            Sciences science = new Sciences(Parent, 2);
             science.Location = new Point(250, 49);
             Parent.Controls.Add(science);
             Parent.ChildElem = science;

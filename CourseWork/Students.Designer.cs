@@ -169,6 +169,7 @@ namespace CourseWork
             this.buttonGrade.TabIndex = 18;
             this.buttonGrade.Text = "Успеваемость";
             this.buttonGrade.UseVisualStyleBackColor = false;
+            this.buttonGrade.Click += new System.EventHandler(this.buttonGrade_Click);
             // 
             // buttonDisciplines
             // 

@@ -36,21 +36,21 @@ namespace CourseWork.Controls
         private void InitFunctions()
         {
             Functions = new Dictionary<string, string>();
-            Functions.Add("GetStudentInGroup", "GetStudentInGroup");
-            Functions.Add("GetCountStudentsInGroup", "GetCountStudentsInGroup");
-            Functions.Add("GetGraduateStudentsWithDissertation", "GetGraduateStudentsWithDissertation");
-            Functions.Add("GetCountGraduateStudentsWithDissertation", "GetCountGraduateStudentsWithDissertation");
-            Functions.Add("GetDissertation", "GetDissertation");
-            Functions.Add("GetDepartment", "GetDepartment");
-            Functions.Add("GetTeachersStudiesGroup", "GetTeachersStudiesGroup");
-            Functions.Add("GetTeachersStudiesGroupInSem", "GetTeachersStudiesGroupInSem");
-            Functions.Add("GetStudentsPassExamWithMark", "GetStudentsPassExamWithMark");
-            Functions.Add("GetStudentsPassExamsGood", "GetStudentsPassExamsGood");
-            Functions.Add("GetTeachersExam", "GetTeachersExam");
-            Functions.Add("GetStudentsWithMarkExam", "GetStudentsWithMarkExam");
-            Functions.Add("GetStudentsWithGrWorkInTeacher", "GetStudentsWithGrWorkInTeacher");
-            Functions.Add("GetTeachersWithGrWork", "GetTeachersWithGrWork");
-            Functions.Add("GetTeachersWorkload", "GetTeachersWorkload");
+            Functions.Add("Запрос 1 (список)", "GetStudentInGroup");
+            Functions.Add("Запрос 1 (количество)", "GetCountStudentsInGroup");
+            Functions.Add("Запрос 2 (список)", "GetGraduateStudentsWithDissertation");
+            Functions.Add("Запрос 2 (количество)", "GetCountGraduateStudentsWithDissertation");
+            Functions.Add("Запрос 3", "GetDissertation");
+            Functions.Add("Запрос 4", "GetDepartment");
+            Functions.Add("Запрос 5", "GetTeachersStudiesGroup");
+            Functions.Add("Запрос 6", "GetTeachersStudiesGroupInSem");
+            Functions.Add("Запрос 7", "GetStudentsPassExamWithMark");
+            Functions.Add("Запрос 8", "GetStudentsPassExamsGood");
+            Functions.Add("Запрос 9", "GetTeachersExam");
+            Functions.Add("Запрос 10", "GetStudentsWithMarkExam");
+            Functions.Add("Запрос 11", "GetStudentsWithGrWorkInTeacher");
+            Functions.Add("Запрос 12", "GetTeachersWithGrWork");
+            Functions.Add("Запрос 13", "GetTeachersWorkload");
         }
 
         private void LoadFunctions()

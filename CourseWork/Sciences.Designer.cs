@@ -1,7 +1,7 @@
 ﻿
 namespace CourseWork
 {
-    partial class Science
+    partial class Sciences
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

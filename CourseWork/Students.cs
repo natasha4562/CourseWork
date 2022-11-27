@@ -61,5 +61,15 @@ namespace CourseWork
             Parent.Controls.Add(grWork);
             Parent.ChildElem = grWork;
         }
+
+        private void buttonGrade_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            Marks mark = new Marks(Parent);
+            mark.Location = new Point(250, 49);
+            Parent.Controls.Add(mark);
+            Parent.ChildElem = mark;
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace CourseWork.Controls
             FunctionName = functionName;
             Button button = new Button();
             button.Font = new Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            button.Text = "Select";
+            button.Text = "Выбрать";
             button.Size = new Size(150, 40);
             button.Location = new Point(790 , 90);
             button.MaximumSize = new Size(243, 50);
@@ -41,198 +41,258 @@ namespace CourseWork.Controls
         public void InitElements(string functionName)
         {
             this.Controls.Clear();
+            this.Controls.Add(label1);
             switch (functionName)
             {
                 case "GetStudentInGroup":
                     {
                         
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID группы");
+                        AddNewElement("textBox", "ID группы");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Пол");
+                        AddNewElement("textBox", "Пол");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("datePicker", "hello world");
+                        AddNewElement("label", "Дата рождения");
+                        AddNewElement("datePicker", "Дата рождения");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Мин. возраст");
+                        AddNewElement("textBox", "Мин. возраст");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Кол-во детей");
+                        AddNewElement("textBox", "Кол-во детей");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID ф. обуч.");
+                        AddNewElement("textBox", "ID ф. обуч.");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Мин. стипендия");
+                        AddNewElement("textBox", "Мин. стипендия");
+
+                        label1.Text = "Получить перечень и общее число студентов указанных групп либо указанного курса (курсов) " +
+                            "факультета полностью, по половому признаку, году рождения, возрасту, признаку наличия детей, по " +
+                            "признаку получения и размеру стипендии.";
 
                         break;
                     }
                 case "GetCountStudentsInGroup":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID группы");
+                        AddNewElement("textBox", "ID группы");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Пол");
+                        AddNewElement("textBox", "Пол");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("datePicker", "hello world");
+                        AddNewElement("label", "Дата рождения");
+                        AddNewElement("datePicker", "Дата рождения");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Мин. возраст");
+                        AddNewElement("textBox", "Мин. возраст");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Кол-во детей");
+                        AddNewElement("textBox", "Кол-во детей");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID ф. обуч.");
+                        AddNewElement("textBox", "ID ф. обуч.");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Мин. стипендия");
+                        AddNewElement("textBox", "Мин. стипендия");
+
+                        label1.Text = "Получить перечень и общее число студентов указанных групп либо указанного курса (курсов) " +
+                            "факультета полностью, по половому признаку, году рождения, возрасту, признаку наличия детей, по " +
+                            "признаку получения и размеру стипендии.";
                         break;
                     }
                 case "GetGraduateStudentsWithDissertation":
                     {
-                        AddNewElement("label", "IdDepartment");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID кафедры");
+                        AddNewElement("textBox", "ID кафедры");
 
-                        AddNewElement("label", "Gender");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Пол");
+                        AddNewElement("textBox", "Пол");
 
-                        AddNewElement("label", "MinBirthdate");
-                        AddNewElement("datePicker", "hello world");
+                        AddNewElement("label", "Дата рождения");
+                        AddNewElement("datePicker", "Дата рождения");
 
-                        AddNewElement("label", "MaxAge");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Макс. возраст");
+                        AddNewElement("textBox", "Макс. возраст");
 
-                        AddNewElement("label", "AmountChildren");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Кол-во детей");
+                        AddNewElement("textBox", "Кол-во детей");
 
-                        AddNewElement("label", "MinSalary");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Мин. ЗП");
+                        AddNewElement("textBox", "Мин. ЗП");
+
+                        label1.Text = "Получить список и общее число преподавателей указанных кафедр либо указанного факультета " +
+                            "полностью, либо указанных категорий(ассистенты, доценты, профессора и т.д.) по половому признаку, " +
+                            "году рождения, возрасту, признаку наличия и количеству детей, размеру заработной платы, " +
+                            "являющихся аспирантами, защитивших кандидатские, докторские диссертации в указанный период.";
 
                         break;
                     }
                 case "GetCountGraduateStudentsWithDissertation":
                     {
-                        AddNewElement("label", "IdDepartment");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID кафедры");
+                        AddNewElement("textBox", "ID кафедры");
 
-                        AddNewElement("label", "Gender");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Пол");
+                        AddNewElement("textBox", "Пол");
 
-                        AddNewElement("label", "MinBirthdate");
-                        AddNewElement("datePicker", "hello world");
+                        AddNewElement("label", "Дата рождения");
+                        AddNewElement("datePicker", "Дата рождения");
 
-                        AddNewElement("label", "MaxAge");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Макс. возраст");
+                        AddNewElement("textBox", "Макс. возраст");
 
-                        AddNewElement("label", "AmountChildren");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Кол-во детей");
+                        AddNewElement("textBox", "Кол-во детей");
 
-                        AddNewElement("label", "MinSalary");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Мин. ЗП");
+                        AddNewElement("textBox", "Мин. ЗП");
+
+                        label1.Text = "Получить список и общее число преподавателей указанных кафедр либо указанного факультета " +
+                            "полностью, либо указанных категорий(ассистенты, доценты, профессора и т.д.) по половому признаку, " +
+                            "году рождения, возрасту, признаку наличия и количеству детей, размеру заработной платы, " +
+                            "являющихся аспирантами, защитивших кандидатские, докторские диссертации в указанный период.";
 
                         break;
                     }
                 case "GetDissertation":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID кафедры");
+                        AddNewElement("textBox", "ID кафедры");
+
+                        label1.Text = "Получить перечень и общее число тем кандидатских и докторских диссертаций, защитивших " +
+                            "сотрудниками указанной кафедры либо указанного факультета.";
+
                         break;
                     }
                 case "GetDepartment":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID группы");
+                        AddNewElement("textBox", "ID группы");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Семестр");
+                        AddNewElement("textBox", "Семестр");
+
+                        label1.Text = "Получить перечень кафедр, проводящих занятия в указанной группе либо на указанном курсе " +
+                            "указанного факультета в указанном семестре, либо за указанный период.";
+
                         break;
                     }
                 case "GetTeachersStudiesGroup":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID группы");
+                        AddNewElement("textBox", "ID группы");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID дисциплины");
+                        AddNewElement("textBox", "ID дисциплины");
+
+                        label1.Text = "Получить список и общее число преподавателей, проводивших (проводящих) занятия по указанной " +
+                            "дисциплине в указанной группе либо на указанном курсе указанного факультета.";
+
                         break;
                     }
                 case "GetTeachersStudiesGroupInSem":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID группы");
+                        AddNewElement("textBox", "ID группы");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID дисциплины");
+                        AddNewElement("textBox", "ID дисциплины");
+
+                        label1.Text = "Получить перечень и общее число преподавателей проводивших (проводящих) лекционные, " +
+                            "семинарские и другие виды занятий в указанной группе либо на указанном курсе указанного " +
+                            "факультета в указанном семестре, либо за указанный период.";
 
                         break;
                     }
                 case "GetStudentsPassExamWithMark":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID дисциплины");
+                        AddNewElement("textBox", "ID дисциплины");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
-                        
+                        AddNewElement("label", "ID оценки");
+                        AddNewElement("textBox", "ID оценки");
+
+                        label1.Text = "Получить список и общее число студентов указанных групп, сдавших зачет либо экзамен по указанной " +
+                            "дисциплине с указанной оценкой.";
+
                         break;
                     }
                 case "GetStudentsPassExamsGood":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID группы");
+                        AddNewElement("textBox", "ID группы");
+
+                        label1.Text = "Получить список и общее число студентов указанных групп или указанного курса указанного " +
+                            "факультета, сдавших указанную сессию на отлично, без троек, без двоек.";
+
                         break;
                     }
                 case "GetTeachersExam":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID группы");
+                        AddNewElement("textBox", "ID группы");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID дисциплины");
+                        AddNewElement("textBox", "ID дисциплины");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Семестр");
+                        AddNewElement("textBox", "Семестр");
+
+                        label1.Text = "Получить перечень преподавателей, принимающих (принимавших) экзамены в указанных группах, по " +
+                            "указанным дисциплинам, в указанном семестре.";
+
                         break;
                     }
                 case "GetStudentsWithMarkExam":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID группы");
+                        AddNewElement("textBox", "ID группы");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID дисциплины");
+                        AddNewElement("textBox", "ID дисциплины");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Оценка");
+                        AddNewElement("textBox", "Оценка");
 
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "Семестр");
+                        AddNewElement("textBox", "Семестр");
+
+                        label1.Text = "Получить список студентов указанных групп, либо которым заданный преподаватель поставил " +
+                            "некоторую оценку за экзамен по определенным дисциплинам, в указанных семестрах, за некоторый " +
+                            "период.";
 
                         break;
                     }
                 case "GetStudentsWithGrWorkInTeacher":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID преподавателя");
+                        AddNewElement("textBox", "ID преподавателя");
+
+                        label1.Text = "Получить список студентов и тем дипломных работ, выполняемых ими на указанной кафедре либо у " +
+                            "указанного преподавателя.";
 
                         break;
                     }
                 case "GetTeachersWithGrWork":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID кафедры");
+                        AddNewElement("textBox", "ID кафедры");
+
+                        label1.Text = "Получить список руководителей дипломных работ с указанной кафедры, либо факультета полностью и " +
+                            "раздельно по некоторым категориям преподавателей.";
 
                         break;
                     }
                 case "GetTeachersWorkload":
                     {
-                        AddNewElement("label", "hello world");
-                        AddNewElement("textBox", "hello world");
+                        AddNewElement("label", "ID вида занятия");
+                        AddNewElement("textBox", "ID вида занятия");
+
+                        label1.Text = "Получить нагрузку преподавателей (название дисциплины, количество часов), ее объем по отдельным " +
+                            "видам занятий и общую нагрузку в указанном семестре для конкретного преподавателя либо для " +
+                            "преподавателей указанной кафедры.";
 
                         break;
                     }

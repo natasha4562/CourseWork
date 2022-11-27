@@ -12,11 +12,11 @@ using University;
 
 namespace CourseWork
 {
-    public partial class Science : UserControl
+    public partial class Sciences : UserControl
     {
         public Form1 Parent { get; set; }
         private int elemForm;
-        public Science(Form1 f, int _num)
+        public Sciences(Form1 f, int _num)
         {
             InitializeComponent();
             Parent = f;

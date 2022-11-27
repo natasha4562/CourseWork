@@ -29,13 +29,24 @@ namespace CourseWork.Controls
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(47, 588);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(829, 91);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
             // 
             // ElementsFunctions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.label1);
             this.Name = "ElementsFunctions";
             this.Size = new System.Drawing.Size(928, 700);
             this.ResumeLayout(false);
@@ -43,5 +54,7 @@ namespace CourseWork.Controls
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
     }
 }
