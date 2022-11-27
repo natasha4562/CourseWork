@@ -18,6 +18,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ControlsAdd\ScienceAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ControlsAdd\GraduateStudentAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ControlsAdd\GraduateWorkAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ControlsAdd\TeachertAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
