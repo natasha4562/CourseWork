@@ -108,7 +108,7 @@ namespace CourseWork
                                     dataGridViewMarks.Rows.Add(marks[i].IdStudentNavigation.FirstName + " " +
                                         marks[i].IdStudentNavigation.Surname + " " + marks[i].IdStudentNavigation.Patronymic,
                                         marks[i].Mark1,
-                                        marks1[i].DateReceiving.Value.ToString("dd.MM.yyyy"),
+                                        marks[i].DateReceiving.Value.ToString("dd.MM.yyyy"),
                                         " "
 
                                         );
