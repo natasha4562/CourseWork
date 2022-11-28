@@ -29,12 +29,18 @@ namespace CourseWork
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.button_Back = new System.Windows.Forms.Button();
             this.dataGridViewScience = new System.Windows.Forms.DataGridView();
             this.Имя = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScience)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -91,16 +97,48 @@ namespace CourseWork
             this.Type.Name = "Type";
             this.Type.ReadOnly = true;
             // 
-            // Science
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuAdd,
+            this.toolStripMenuEdit,
+            this.toolStripMenuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 76);
+            // 
+            // toolStripMenuAdd
+            // 
+            this.toolStripMenuAdd.Name = "toolStripMenuAdd";
+            this.toolStripMenuAdd.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuAdd.Text = "Добавить";
+            this.toolStripMenuAdd.Click += new System.EventHandler(this.toolStripMenuAdd_Click);
+            // 
+            // toolStripMenuEdit
+            // 
+            this.toolStripMenuEdit.Name = "toolStripMenuEdit";
+            this.toolStripMenuEdit.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuEdit.Text = "Редактировать";
+            this.toolStripMenuEdit.Click += new System.EventHandler(this.toolStripMenuEdit_Click);
+            // 
+            // toolStripMenuDelete
+            // 
+            this.toolStripMenuDelete.Name = "toolStripMenuDelete";
+            this.toolStripMenuDelete.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuDelete.Text = "Удалить";
+            this.toolStripMenuDelete.Click += new System.EventHandler(this.toolStripMenuDelete_Click);
+            // 
+            // Sciences
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridViewScience);
             this.Controls.Add(this.button_Back);
             this.Controls.Add(this.label1);
-            this.Name = "Science";
+            this.Name = "Sciences";
             this.Size = new System.Drawing.Size(928, 700);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScience)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +151,9 @@ namespace CourseWork
         private System.Windows.Forms.DataGridView dataGridViewScience;
         private System.Windows.Forms.DataGridViewTextBoxColumn Имя;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuAdd;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuEdit;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuDelete;
     }
 }

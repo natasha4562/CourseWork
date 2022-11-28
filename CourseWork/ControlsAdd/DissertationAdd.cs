@@ -15,51 +15,76 @@ namespace CourseWork.ControlsAdd
     public partial class DissertationAdd : UserControl
     {
         public Form1 Parent { get; set; }
-        private Student student;
-
-        public DissertationAdd(Form1 f, Student st = null)
+        private int elemForm;
+        private DistributionScience distributionScience;
+        private DistributionDissertation distributionDissertation;
+        
+        public DissertationAdd(Form1 f, int _num, DistributionScience _s = null, DistributionDissertation _d = null)
         {
             InitializeComponent();
             Parent = f;
-            student = st;
-            LoadComboboxFormStudy();
+            elemForm = _num;
+            distributionScience = _s;
+            distributionDissertation = _d;
+            LoadComboboxDissertation();
             EditVersion();
         }
 
-        private void LoadComboboxFormStudy()
+        private void LoadComboboxDissertation()
         {
             using (UniversityContext db = new UniversityContext())
             {
-                var list = db.StudyForms.Select(s => s.Name).ToList();
-
-                for(int i = 0; i < list.Count; i++)
+                if (elemForm == 1)
                 {
-                    comboBoxStudyForm.Items.Add(list[i]);
+                    var list = db.Sciences.Select(s => s.Name).ToList();
+
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        comboBoxDissertation.Items.Add(list[i]);
+                    }
                 }
-                comboBoxStudyForm.SelectedIndex = 0;
-                radioButtonMale.Checked = true;
+                if (elemForm == 2)
+                {
+                    var list = db.Dissertations.Select(s => s.Name).ToList();
+
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        comboBoxDissertation.Items.Add(list[i]);
+                    }
+                }
+                
+                comboBoxDissertation.SelectedIndex = 0;
             }
         }
 
         private void EditVersion()
         {
-            if(student != null)
+            if (elemForm == 1)
             {
                 using (UniversityContext db = new UniversityContext())
                 {
-                    textBoxSurname.Text = student.Surname;
-                    textBoxFirstName.Text = student.FirstName;
-                    textBoxPatronymic.Text = student.Patronymic;
-                    textBoxCreditBookNumber.Text = student.CreditBookNumber.ToString();
-                    if (student.Gender == "м") radioButtonMale.Checked = true;
-                    else if (student.Gender == "ж") radioButtonFemale.Checked = true;
-                    dateTimePickerBirthdate.Value = student.Birthdate.Value;
-                    textBoxAmountChildren.Text = student.AmountChildren.ToString();
-                    var elem = db.StudyForms.FirstOrDefault(s => s.Id == student.IdStudyForm).Name;
-                    comboBoxStudyForm.SelectedIndex = comboBoxStudyForm.Items.IndexOf(elem);
-                    textBoxAmountScholarship.Text = student.AmountScholarship.ToString();
+                    if (distributionScience != null)
+                    {
+                        var elem = db.Sciences.FirstOrDefault(d => d.Id == distributionScience.IdScience).Name;
+                        comboBoxDissertation.SelectedIndex = comboBoxDissertation.Items.IndexOf(elem);
+                        textBoxName.Text = distributionScience.Name;
 
-                    label1.Text = "Редактирование";
+                        label1.Text = "Редактирование";
+                    }
+                }
+            }
+            if (elemForm == 2)
+            {
+                using (UniversityContext db = new UniversityContext())
+                {
+                    if (distributionDissertation != null)
+                    {
+                        var elem = db.Dissertations.FirstOrDefault(d => d.Id == distributionDissertation.IdDissertation).Name;
+                        comboBoxDissertation.SelectedIndex = comboBoxDissertation.Items.IndexOf(elem);
+                        textBoxName.Text = distributionDissertation.Name;
+
+                        label1.Text = "Редактирование";
+                    }
                 }
             }
         }
@@ -73,62 +98,92 @@ namespace CourseWork.ControlsAdd
         {
             try
             {
-                if (student != null)
+                if (elemForm == 1)
                 {
-                    EditStudent();
+                    if (distributionScience != null)
+                    {
+                        EditStudent();
+                    }
+                    else
+                    {
+                        AddNewStudent();
+                    }
                 }
-                else
+                if (elemForm == 2)
                 {
-                    AddNewStudent();
+                    if (distributionDissertation != null)
+                    {
+                        EditStudent();
+                    }
+                    else
+                    {
+                        AddNewStudent();
+                    }
                 }
-
-                back();
+                
             }
             catch (Exception ee)
             {
                 MessageBox.Show(ee.Message);
             }
-           
+            back();
         }
 
         private void EditStudent()
         {
-            using (UniversityContext db = new UniversityContext())
+            if (elemForm == 1)
             {
-                student.Surname = textBoxSurname.Text;
-                student.FirstName = textBoxFirstName.Text;
-                student.Patronymic = textBoxPatronymic.Text;
-                student.CreditBookNumber = int.Parse(textBoxCreditBookNumber.Text);
-                student.Gender = radioButtonMale.Checked == true ? radioButtonMale.Text : radioButtonFemale.Text;
-                student.Birthdate = dateTimePickerBirthdate.Value;
-                student.AmountChildren = int.Parse(textBoxAmountChildren.Text);
-                student.IdStudyForm = db.StudyForms.Where(s => s.Name == comboBoxStudyForm.Text).FirstOrDefault().Id;
-                student.AmountScholarship = decimal.Parse(textBoxAmountScholarship.Text);
-                student.IdGroupStudents = Parent.IdGroup;
+                using (UniversityContext db = new UniversityContext())
+                {
+                    distributionScience.IdScience = db.Sciences.Where(d => d.Name == comboBoxDissertation.Text).FirstOrDefault().Id;
+                    distributionScience.IdTeacher = db.Teachers.Where(t => t.Id == Parent.IdTeacher).FirstOrDefault().Id;
+                    distributionScience.Name = textBoxName.Text;
 
-                db.Entry(student).State = EntityState.Modified;
-                db.SaveChanges();
+                    db.Entry(distributionScience).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            if (elemForm == 2)
+            {
+                using (UniversityContext db = new UniversityContext())
+                {
+                    distributionDissertation.IdDissertation = db.Dissertations.Where(d => d.Name == comboBoxDissertation.Text).FirstOrDefault().Id;
+                    distributionDissertation.IdTeacher = db.Teachers.Where(t => t.Id == Parent.IdTeacher).FirstOrDefault().Id;
+                    distributionDissertation.Name = textBoxName.Text;
+
+                    db.Entry(distributionDissertation).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
         }
 
         private void AddNewStudent()
         {
-            using (UniversityContext db = new UniversityContext())
+            if (elemForm == 1)
             {
-                Student student1 = new Student();
-                student1.Surname = textBoxSurname.Text;
-                student1.FirstName = textBoxFirstName.Text;
-                student1.Patronymic = textBoxPatronymic.Text;
-                student1.CreditBookNumber = int.Parse(textBoxCreditBookNumber.Text);
-                student1.Gender = radioButtonMale.Checked == true ? radioButtonMale.Text : radioButtonFemale.Text;
-                student1.Birthdate = dateTimePickerBirthdate.Value;
-                student1.AmountChildren = int.Parse(textBoxAmountChildren.Text);
-                student1.IdStudyForm = db.StudyForms.Where(s => s.Name == comboBoxStudyForm.Text).FirstOrDefault().Id;
-                student1.AmountScholarship = decimal.Parse(textBoxAmountScholarship.Text);
-                student1.IdGroupStudents = Parent.IdGroup;
+                using (UniversityContext db = new UniversityContext())
+                {
+                    DistributionScience science = new DistributionScience();
+                    science.IdScience = db.Sciences.Where(d => d.Name == comboBoxDissertation.Text).FirstOrDefault().Id;
+                    science.IdTeacher = db.Teachers.Where(t => t.Id == Parent.IdTeacher).FirstOrDefault().Id;
+                    science.Name = textBoxName.Text;
 
-                db.Students.Add(student1);
-                db.SaveChanges();
+                    db.DistributionSciences.Add(science);
+                    db.SaveChanges();
+                }
+            }
+            if (elemForm == 2)
+            {
+                using (UniversityContext db = new UniversityContext())
+                {
+                    DistributionDissertation dissertation = new DistributionDissertation();
+                    dissertation.IdDissertation = db.Dissertations.Where(d => d.Name == comboBoxDissertation.Text).FirstOrDefault().Id;
+                    dissertation.IdTeacher = db.Teachers.Where(t => t.Id == Parent.IdTeacher).FirstOrDefault().Id;
+                    dissertation.Name = textBoxName.Text;
+
+                    db.DistributionDissertations.Add(dissertation);
+                    db.SaveChanges();
+                }
             }
         }
 
@@ -136,10 +191,10 @@ namespace CourseWork.ControlsAdd
         {
             Parent.Controls.Remove(this);
 
-            Students student1 = new Students(Parent);
-            student1.Location = new Point(250, 49);
-            Parent.Controls.Add(student1);
-            Parent.ChildElem = student1;
+            Sciences sciences = new Sciences(Parent, elemForm);
+            sciences.Location = new Point(250, 49);
+            Parent.Controls.Add(sciences);
+            Parent.ChildElem = sciences;
         }
     }
 }
