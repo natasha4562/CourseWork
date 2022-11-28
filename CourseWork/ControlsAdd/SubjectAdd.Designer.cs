@@ -1,7 +1,7 @@
 ﻿
 namespace CourseWork.ControlsAdd
 {
-    partial class ScienceAdd
+    partial class SubjectAdd
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

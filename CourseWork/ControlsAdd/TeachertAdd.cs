@@ -15,49 +15,48 @@ namespace CourseWork.ControlsAdd
     public partial class TeachertAdd : UserControl
     {
         public Form1 Parent { get; set; }
-        private Student student;
+        private Teacher teacher;
 
-        public TeachertAdd(Form1 f, Student st = null)
+        public TeachertAdd(Form1 f, Teacher _teach = null)
         {
             InitializeComponent();
             Parent = f;
-            student = st;
-            LoadComboboxFormStudy();
+            teacher = _teach;
+            LoadComboboxPost();
             EditVersion();
         }
 
-        private void LoadComboboxFormStudy()
+        private void LoadComboboxPost()
         {
             using (UniversityContext db = new UniversityContext())
             {
-                var list = db.StudyForms.Select(s => s.Name).ToList();
+                var list = db.Posts.Select(p => p.Name).ToList();
 
                 for(int i = 0; i < list.Count; i++)
                 {
-                    comboBoxStudyForm.Items.Add(list[i]);
+                    comboBoxPost.Items.Add(list[i]);
                 }
-                comboBoxStudyForm.SelectedIndex = 0;
+                comboBoxPost.SelectedIndex = 0;
                 radioButtonMale.Checked = true;
             }
         }
 
         private void EditVersion()
         {
-            if(student != null)
+            if(teacher != null)
             {
                 using (UniversityContext db = new UniversityContext())
                 {
-                    textBoxSurname.Text = student.Surname;
-                    textBoxFirstName.Text = student.FirstName;
-                    textBoxPatronymic.Text = student.Patronymic;
-                    textBoxCreditBookNumber.Text = student.CreditBookNumber.ToString();
-                    if (student.Gender == "м") radioButtonMale.Checked = true;
-                    else if (student.Gender == "ж") radioButtonFemale.Checked = true;
-                    dateTimePickerBirthdate.Value = student.Birthdate.Value;
-                    textBoxAmountChildren.Text = student.AmountChildren.ToString();
-                    var elem = db.StudyForms.FirstOrDefault(s => s.Id == student.IdStudyForm).Name;
-                    comboBoxStudyForm.SelectedIndex = comboBoxStudyForm.Items.IndexOf(elem);
-                    textBoxAmountScholarship.Text = student.AmountScholarship.ToString();
+                    textBoxSurname.Text = teacher.Surname;
+                    textBoxFirstName.Text = teacher.FirstName;
+                    textBoxPatronymic.Text = teacher.Patronymic;
+                    if (teacher.Gender == "м") radioButtonMale.Checked = true;
+                    else if (teacher.Gender == "ж") radioButtonFemale.Checked = true;
+                    dateTimePickerBirthdate.Value = teacher.Birthdate.Value;
+                    textBoxAmountChildren.Text = teacher.AmountChildren.ToString();
+                    textBoxSalary.Text = teacher.Salary.ToString();
+                    var elem = db.Posts.FirstOrDefault(s => s.Id == teacher.IdPost).Name;
+                    comboBoxPost.SelectedIndex = comboBoxPost.Items.IndexOf(elem);
 
                     label1.Text = "Редактирование";
                 }
@@ -73,13 +72,13 @@ namespace CourseWork.ControlsAdd
         {
             try
             {
-                if (student != null)
+                if (teacher != null)
                 {
-                    EditStudent();
+                    EditTeacher();
                 }
                 else
                 {
-                    AddNewStudent();
+                    AddNewTeacher();
                 }
 
                 back();
@@ -91,43 +90,41 @@ namespace CourseWork.ControlsAdd
            
         }
 
-        private void EditStudent()
+        private void EditTeacher()
         {
             using (UniversityContext db = new UniversityContext())
             {
-                student.Surname = textBoxSurname.Text;
-                student.FirstName = textBoxFirstName.Text;
-                student.Patronymic = textBoxPatronymic.Text;
-                student.CreditBookNumber = int.Parse(textBoxCreditBookNumber.Text);
-                student.Gender = radioButtonMale.Checked == true ? radioButtonMale.Text : radioButtonFemale.Text;
-                student.Birthdate = dateTimePickerBirthdate.Value;
-                student.AmountChildren = int.Parse(textBoxAmountChildren.Text);
-                student.IdStudyForm = db.StudyForms.Where(s => s.Name == comboBoxStudyForm.Text).FirstOrDefault().Id;
-                student.AmountScholarship = decimal.Parse(textBoxAmountScholarship.Text);
-                student.IdGroupStudents = Parent.IdGroup;
+                teacher.Surname = textBoxSurname.Text;
+                teacher.FirstName = textBoxFirstName.Text;
+                teacher.Patronymic = textBoxPatronymic.Text;
+                teacher.Gender = radioButtonMale.Checked == true ? radioButtonMale.Text : radioButtonFemale.Text;
+                teacher.Birthdate = dateTimePickerBirthdate.Value;
+                teacher.AmountChildren = int.Parse(textBoxAmountChildren.Text);
+                teacher.Salary = decimal.Parse(textBoxSalary.Text);
+                teacher.IdPost = db.Posts.Where(s => s.Name == comboBoxPost.Text).FirstOrDefault().Id;
+                teacher.IdDepartment = Parent.IdDepartnemt;
 
-                db.Entry(student).State = EntityState.Modified;
+                db.Entry(teacher).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }
 
-        private void AddNewStudent()
+        private void AddNewTeacher()
         {
             using (UniversityContext db = new UniversityContext())
             {
-                Student student1 = new Student();
-                student1.Surname = textBoxSurname.Text;
-                student1.FirstName = textBoxFirstName.Text;
-                student1.Patronymic = textBoxPatronymic.Text;
-                student1.CreditBookNumber = int.Parse(textBoxCreditBookNumber.Text);
-                student1.Gender = radioButtonMale.Checked == true ? radioButtonMale.Text : radioButtonFemale.Text;
-                student1.Birthdate = dateTimePickerBirthdate.Value;
-                student1.AmountChildren = int.Parse(textBoxAmountChildren.Text);
-                student1.IdStudyForm = db.StudyForms.Where(s => s.Name == comboBoxStudyForm.Text).FirstOrDefault().Id;
-                student1.AmountScholarship = decimal.Parse(textBoxAmountScholarship.Text);
-                student1.IdGroupStudents = Parent.IdGroup;
+                Teacher teacher1 = new Teacher();
+                teacher1.Surname = textBoxSurname.Text;
+                teacher1.FirstName = textBoxFirstName.Text;
+                teacher1.Patronymic = textBoxPatronymic.Text;
+                teacher1.Gender = radioButtonMale.Checked == true ? radioButtonMale.Text : radioButtonFemale.Text;
+                teacher1.Birthdate = dateTimePickerBirthdate.Value;
+                teacher1.AmountChildren = int.Parse(textBoxAmountChildren.Text);
+                teacher1.Salary = decimal.Parse(textBoxSalary.Text);
+                teacher1.IdPost = db.Posts.Where(s => s.Name == comboBoxPost.Text).FirstOrDefault().Id;
+                teacher1.IdDepartment = Parent.IdDepartnemt;
 
-                db.Students.Add(student1);
+                db.Teachers.Add(teacher1);
                 db.SaveChanges();
             }
         }
@@ -136,10 +133,10 @@ namespace CourseWork.ControlsAdd
         {
             Parent.Controls.Remove(this);
 
-            Students student1 = new Students(Parent);
-            student1.Location = new Point(250, 49);
-            Parent.Controls.Add(student1);
-            Parent.ChildElem = student1;
+            TeachersInfo teachers = new TeachersInfo(Parent);
+            teachers.Location = new Point(250, 49);
+            Parent.Controls.Add(teachers);
+            Parent.ChildElem = teachers;
         }
     }
 }

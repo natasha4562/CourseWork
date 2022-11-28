@@ -45,7 +45,7 @@ namespace CourseWork
         }
 
         private void labelChahgeColor_MouseMove(object sender, MouseEventArgs e)
-        {
+        { 
             Label label = sender as Label;
             label.ForeColor = Color.Black;
         }
@@ -60,6 +60,11 @@ namespace CourseWork
         {
             Label label = sender as Label;
             Parent.IdDepartnemt = int.Parse(label.Name);
+            using (UniversityContext db = new UniversityContext())
+            {
+                if(db.Teachers.Where(t => t.IdDepartment == Parent.IdDepartnemt).Any())
+                    Parent.IdTeacher = db.Teachers.Where(t => t.IdDepartment == Parent.IdDepartnemt).OrderBy(t => t.Surname).FirstOrDefault().Id;
+            }
             Parent.Controls.Remove(this);
 
             TeachersInfo teachers = new TeachersInfo(Parent);

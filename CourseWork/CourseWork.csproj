@@ -21,7 +21,7 @@
     <Compile Update="ControlsAdd\DissertationAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="ControlsAdd\ScienceAdd.cs">
+    <Compile Update="ControlsAdd\SubjectAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ControlsAdd\GraduateStudentAdd.cs">

@@ -36,7 +36,6 @@ namespace CourseWork.ControlsAdd
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,13 +43,12 @@ namespace CourseWork.ControlsAdd
             this.textBoxSurname = new System.Windows.Forms.TextBox();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.textBoxPatronymic = new System.Windows.Forms.TextBox();
-            this.textBoxCreditBookNumber = new System.Windows.Forms.TextBox();
-            this.textBoxAmountScholarship = new System.Windows.Forms.TextBox();
+            this.textBoxSalary = new System.Windows.Forms.TextBox();
             this.textBoxAmountChildren = new System.Windows.Forms.TextBox();
             this.dateTimePickerBirthdate = new System.Windows.Forms.DateTimePicker();
             this.radioButtonMale = new System.Windows.Forms.RadioButton();
             this.radioButtonFemale = new System.Windows.Forms.RadioButton();
-            this.comboBoxStudyForm = new System.Windows.Forms.ComboBox();
+            this.comboBoxPost = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -81,27 +79,27 @@ namespace CourseWork.ControlsAdd
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(162, 498);
+            this.label11.Location = new System.Drawing.Point(237, 453);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(223, 31);
+            this.label11.Size = new System.Drawing.Size(148, 31);
             this.label11.TabIndex = 35;
-            this.label11.Text = "Размер стипендии:";
+            this.label11.Text = "Должность:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(175, 447);
+            this.label10.Location = new System.Drawing.Point(169, 402);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(210, 31);
+            this.label10.Size = new System.Drawing.Size(216, 31);
             this.label10.TabIndex = 34;
-            this.label10.Text = "Форма обучения:";
+            this.label10.Text = "Заработная плата:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(166, 400);
+            this.label9.Location = new System.Drawing.Point(166, 355);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(219, 31);
             this.label9.TabIndex = 33;
@@ -111,7 +109,7 @@ namespace CourseWork.ControlsAdd
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(192, 348);
+            this.label8.Location = new System.Drawing.Point(192, 303);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(193, 31);
             this.label8.TabIndex = 32;
@@ -121,21 +119,11 @@ namespace CourseWork.ControlsAdd
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(319, 300);
+            this.label7.Location = new System.Drawing.Point(319, 255);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 31);
             this.label7.TabIndex = 31;
             this.label7.Text = "Пол:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(170, 253);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(215, 31);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "Номер зач. книги:";
             // 
             // label5
             // 
@@ -205,26 +193,18 @@ namespace CourseWork.ControlsAdd
             this.textBoxPatronymic.Size = new System.Drawing.Size(269, 38);
             this.textBoxPatronymic.TabIndex = 39;
             // 
-            // textBoxCreditBookNumber
+            // textBoxSalary
             // 
-            this.textBoxCreditBookNumber.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxCreditBookNumber.Location = new System.Drawing.Point(394, 250);
-            this.textBoxCreditBookNumber.Name = "textBoxCreditBookNumber";
-            this.textBoxCreditBookNumber.Size = new System.Drawing.Size(269, 38);
-            this.textBoxCreditBookNumber.TabIndex = 40;
-            // 
-            // textBoxAmountScholarship
-            // 
-            this.textBoxAmountScholarship.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAmountScholarship.Location = new System.Drawing.Point(394, 495);
-            this.textBoxAmountScholarship.Name = "textBoxAmountScholarship";
-            this.textBoxAmountScholarship.Size = new System.Drawing.Size(269, 38);
-            this.textBoxAmountScholarship.TabIndex = 41;
+            this.textBoxSalary.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSalary.Location = new System.Drawing.Point(394, 399);
+            this.textBoxSalary.Name = "textBoxSalary";
+            this.textBoxSalary.Size = new System.Drawing.Size(269, 38);
+            this.textBoxSalary.TabIndex = 41;
             // 
             // textBoxAmountChildren
             // 
             this.textBoxAmountChildren.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAmountChildren.Location = new System.Drawing.Point(394, 397);
+            this.textBoxAmountChildren.Location = new System.Drawing.Point(394, 352);
             this.textBoxAmountChildren.Name = "textBoxAmountChildren";
             this.textBoxAmountChildren.Size = new System.Drawing.Size(269, 38);
             this.textBoxAmountChildren.TabIndex = 42;
@@ -232,7 +212,7 @@ namespace CourseWork.ControlsAdd
             // dateTimePickerBirthdate
             // 
             this.dateTimePickerBirthdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerBirthdate.Location = new System.Drawing.Point(391, 342);
+            this.dateTimePickerBirthdate.Location = new System.Drawing.Point(394, 297);
             this.dateTimePickerBirthdate.Name = "dateTimePickerBirthdate";
             this.dateTimePickerBirthdate.Size = new System.Drawing.Size(250, 38);
             this.dateTimePickerBirthdate.TabIndex = 43;
@@ -241,7 +221,7 @@ namespace CourseWork.ControlsAdd
             // 
             this.radioButtonMale.AutoSize = true;
             this.radioButtonMale.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButtonMale.Location = new System.Drawing.Point(391, 298);
+            this.radioButtonMale.Location = new System.Drawing.Point(394, 253);
             this.radioButtonMale.Name = "radioButtonMale";
             this.radioButtonMale.Size = new System.Drawing.Size(51, 35);
             this.radioButtonMale.TabIndex = 44;
@@ -253,7 +233,7 @@ namespace CourseWork.ControlsAdd
             // 
             this.radioButtonFemale.AutoSize = true;
             this.radioButtonFemale.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButtonFemale.Location = new System.Drawing.Point(460, 298);
+            this.radioButtonFemale.Location = new System.Drawing.Point(463, 253);
             this.radioButtonFemale.Name = "radioButtonFemale";
             this.radioButtonFemale.Size = new System.Drawing.Size(52, 35);
             this.radioButtonFemale.TabIndex = 45;
@@ -261,27 +241,26 @@ namespace CourseWork.ControlsAdd
             this.radioButtonFemale.Text = "ж";
             this.radioButtonFemale.UseVisualStyleBackColor = true;
             // 
-            // comboBoxStudyForm
+            // comboBoxPost
             // 
-            this.comboBoxStudyForm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStudyForm.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxStudyForm.FormattingEnabled = true;
-            this.comboBoxStudyForm.Location = new System.Drawing.Point(391, 444);
-            this.comboBoxStudyForm.Name = "comboBoxStudyForm";
-            this.comboBoxStudyForm.Size = new System.Drawing.Size(272, 39);
-            this.comboBoxStudyForm.TabIndex = 46;
+            this.comboBoxPost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPost.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxPost.FormattingEnabled = true;
+            this.comboBoxPost.Location = new System.Drawing.Point(394, 450);
+            this.comboBoxPost.Name = "comboBoxPost";
+            this.comboBoxPost.Size = new System.Drawing.Size(272, 39);
+            this.comboBoxPost.TabIndex = 46;
             // 
-            // StudentAdd
+            // TeachertAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBoxStudyForm);
+            this.Controls.Add(this.comboBoxPost);
             this.Controls.Add(this.radioButtonFemale);
             this.Controls.Add(this.radioButtonMale);
             this.Controls.Add(this.dateTimePickerBirthdate);
             this.Controls.Add(this.textBoxAmountChildren);
-            this.Controls.Add(this.textBoxAmountScholarship);
-            this.Controls.Add(this.textBoxCreditBookNumber);
+            this.Controls.Add(this.textBoxSalary);
             this.Controls.Add(this.textBoxPatronymic);
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.textBoxSurname);
@@ -291,13 +270,12 @@ namespace CourseWork.ControlsAdd
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button_Back);
             this.Controls.Add(this.label1);
-            this.Name = "StudentAdd";
+            this.Name = "TeachertAdd";
             this.Size = new System.Drawing.Size(928, 700);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -313,7 +291,6 @@ namespace CourseWork.ControlsAdd
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -321,12 +298,11 @@ namespace CourseWork.ControlsAdd
         private System.Windows.Forms.TextBox textBoxSurname;
         private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.TextBox textBoxPatronymic;
-        private System.Windows.Forms.TextBox textBoxCreditBookNumber;
-        private System.Windows.Forms.TextBox textBoxAmountScholarship;
+        private System.Windows.Forms.TextBox textBoxSalary;
         private System.Windows.Forms.TextBox textBoxAmountChildren;
         private System.Windows.Forms.DateTimePicker dateTimePickerBirthdate;
         private System.Windows.Forms.RadioButton radioButtonMale;
         private System.Windows.Forms.RadioButton radioButtonFemale;
-        private System.Windows.Forms.ComboBox comboBoxStudyForm;
+        private System.Windows.Forms.ComboBox comboBoxPost;
     }
 }

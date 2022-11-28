@@ -12,12 +12,12 @@ using University;
 
 namespace CourseWork.ControlsAdd
 {
-    public partial class ScienceAdd : UserControl
+    public partial class SubjectAdd : UserControl
     {
         public Form1 Parent { get; set; }
         private Student student;
 
-        public ScienceAdd(Form1 f, Student st = null)
+        public SubjectAdd(Form1 f, Student st = null)
         {
             InitializeComponent();
             Parent = f;

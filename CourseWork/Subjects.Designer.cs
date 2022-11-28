@@ -29,7 +29,8 @@ namespace CourseWork
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.button_Back = new System.Windows.Forms.Button();
             this.dataGridViewSubjects = new System.Windows.Forms.DataGridView();
@@ -40,7 +41,12 @@ namespace CourseWork
             this.TypeOccupation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FormControl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSubjects)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -82,14 +88,14 @@ namespace CourseWork
             this.TypeOccupation,
             this.FormControl,
             this.Group});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSubjects.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSubjects.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewSubjects.Location = new System.Drawing.Point(0, 87);
             this.dataGridViewSubjects.Name = "dataGridViewSubjects";
             this.dataGridViewSubjects.RowHeadersWidth = 51;
@@ -146,6 +152,37 @@ namespace CourseWork
             this.Group.Name = "Group";
             this.Group.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuAdd,
+            this.toolStripMenuEdit,
+            this.toolStripMenuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 76);
+            // 
+            // toolStripMenuAdd
+            // 
+            this.toolStripMenuAdd.Name = "toolStripMenuAdd";
+            this.toolStripMenuAdd.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuAdd.Text = "Добавить";
+            this.toolStripMenuAdd.Click += new System.EventHandler(this.toolStripMenuAdd_Click);
+            // 
+            // toolStripMenuEdit
+            // 
+            this.toolStripMenuEdit.Name = "toolStripMenuEdit";
+            this.toolStripMenuEdit.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuEdit.Text = "Редактировать";
+            this.toolStripMenuEdit.Click += new System.EventHandler(this.toolStripMenuEdit_Click);
+            // 
+            // toolStripMenuDelete
+            // 
+            this.toolStripMenuDelete.Name = "toolStripMenuDelete";
+            this.toolStripMenuDelete.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuDelete.Text = "Удалить";
+            this.toolStripMenuDelete.Click += new System.EventHandler(this.toolStripMenuDelete_Click);
+            // 
             // Subjects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -155,6 +192,7 @@ namespace CourseWork
             this.Controls.Add(this.label1);
             this.Size = new System.Drawing.Size(928, 700);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSubjects)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +210,9 @@ namespace CourseWork
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeOccupation;
         private System.Windows.Forms.DataGridViewTextBoxColumn FormControl;
         private System.Windows.Forms.DataGridViewTextBoxColumn Group;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuAdd;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuEdit;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuDelete;
     }
 }

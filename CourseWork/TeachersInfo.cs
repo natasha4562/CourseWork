@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWork.ControlsAdd;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,7 @@ namespace CourseWork
         {
             InitializeComponent();
             Parent = f;
+            this.ContextMenuStrip = contextMenuStrip1;
             LoadTeachets();
         }
 
@@ -109,6 +111,55 @@ namespace CourseWork
             science.Location = new Point(250, 49);
             Parent.Controls.Add(science);
             Parent.ChildElem = science;
+        }
+
+        private void toolStripMenuAdd_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            TeachertAdd teachert = new TeachertAdd(Parent);
+            teachert.Location = new Point(250, 49);
+            Parent.Controls.Add(teachert);
+            Parent.ChildElem = teachert;
+        }
+
+        private void toolStripMenuEdit_Click(object sender, EventArgs e)
+        {
+            using (UniversityContext db = new UniversityContext())
+            {
+                int id = idTeachers[comboBoxTeachers.SelectedIndex];
+                var teach = db.Teachers.Where(s => s.Id == id).FirstOrDefault();
+
+                Parent.Controls.Remove(this);
+
+                TeachertAdd teachert = new TeachertAdd(Parent, teach);
+                teachert.Location = new Point(250, 49);
+                Parent.Controls.Add(teachert);
+                Parent.ChildElem = teachert;
+            }
+        }
+
+        private void toolStripMenuDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить данную запись?",
+                "Сообщение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+                using (UniversityContext db = new UniversityContext())
+                {
+                    int id = idTeachers[comboBoxTeachers.SelectedIndex];
+
+                    db.Teachers.Remove(db.Teachers.Where(s => s.Id == id).FirstOrDefault());
+                    db.SaveChanges();
+
+                    comboBoxTeachers.Items.RemoveAt(idTeachers.IndexOf(id));
+                    idTeachers.RemoveAt(idTeachers.IndexOf(id));
+                }
+            }
         }
     }
 }

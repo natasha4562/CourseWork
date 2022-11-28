@@ -84,5 +84,20 @@ namespace CourseWork
                 Parent.ChildElem = students;
             }
         }
+
+        private void toolStripMenuAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
