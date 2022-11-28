@@ -29,7 +29,7 @@ namespace CourseWork
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.button_Back = new System.Windows.Forms.Button();
             this.dataGridViewSubjects = new System.Windows.Forms.DataGridView();
@@ -39,6 +39,7 @@ namespace CourseWork
             this.Semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeOccupation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FormControl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSubjects)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,15 +80,16 @@ namespace CourseWork
             this.Course,
             this.Semester,
             this.TypeOccupation,
-            this.FormControl});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSubjects.DefaultCellStyle = dataGridViewCellStyle2;
+            this.FormControl,
+            this.Group});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSubjects.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSubjects.Location = new System.Drawing.Point(0, 87);
             this.dataGridViewSubjects.Name = "dataGridViewSubjects";
             this.dataGridViewSubjects.RowHeadersWidth = 51;
@@ -137,6 +139,13 @@ namespace CourseWork
             this.FormControl.Name = "FormControl";
             this.FormControl.ReadOnly = true;
             // 
+            // Group
+            // 
+            this.Group.HeaderText = "Группа";
+            this.Group.MinimumWidth = 6;
+            this.Group.Name = "Group";
+            this.Group.ReadOnly = true;
+            // 
             // Subjects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -162,5 +171,6 @@ namespace CourseWork
         private System.Windows.Forms.DataGridViewTextBoxColumn Semester;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeOccupation;
         private System.Windows.Forms.DataGridViewTextBoxColumn FormControl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Group;
     }
 }

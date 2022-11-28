@@ -36,21 +36,31 @@ namespace CourseWork
 
                     for (int i = 0; i < sub.Count; i++)
                     {
+                        var gs = db.DistributionSubjects.Where(d => d.IdSubject == sub[i].Id).FirstOrDefault().IdGroupStudents;
+
                         dataGridViewSubjects.Rows.Add(sub[i].Name, sub[i].AmountHours, sub[i].Course, sub[i].Semester,
                             db.TypeOccupations.Where(t => t.Id == sub[i].IdTypeOccupation).FirstOrDefault().Name,
-                            db.FormControls.Where(f => f.Id == sub[i].IdFormControl).FirstOrDefault().Name);
+                            db.FormControls.Where(f => f.Id == sub[i].IdFormControl).FirstOrDefault().Name,
+                            db.GroupStudents.Where(g => g.Id == gs).FirstOrDefault().Number);
                     }
                 }
                 if(elemForm == 2)
                 {
+
+                    dataGridViewSubjects.Columns[dataGridViewSubjects.Columns.Count - 1].HeaderText = "Преподаватель";
+
                     var ds = db.DistributionSubjects.Where(d => d.IdGroupStudents == Parent.IdGroup).Select(d => d.IdSubject).ToList();
                     var sub = db.Subjects.Where(s => ds.Contains(s.Id)).OrderBy(s => s.Semester).ThenBy(s => s.Name).ToList();
 
                     for (int i = 0; i < sub.Count; i++)
                     {
+                        var idTeach = db.DistributionSubjects.Where(d => d.IdSubject == sub[i].Id).FirstOrDefault().IdTeacher;
+                        var teach = db.Teachers.Where(t => t.Id == idTeach).FirstOrDefault();
+
                         dataGridViewSubjects.Rows.Add(sub[i].Name, sub[i].AmountHours, sub[i].Course, sub[i].Semester,
                             db.TypeOccupations.Where(t => t.Id == sub[i].IdTypeOccupation).FirstOrDefault().Name,
-                            db.FormControls.Where(f => f.Id == sub[i].IdFormControl).FirstOrDefault().Name);
+                            db.FormControls.Where(f => f.Id == sub[i].IdFormControl).FirstOrDefault().Name,
+                            teach.Surname + " " + teach.FirstName + " " + teach.Patronymic);
                     }
                 }
             }
