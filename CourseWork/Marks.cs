@@ -55,7 +55,7 @@ namespace CourseWork
 
         private void comboBoxSubjects_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            ReturnData();
         }
 
         private void comboBoxSemester_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,7 +76,78 @@ namespace CourseWork
 
         private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            ReturnData();
+        }
+
+        private void ReturnData()
+        {
+            Semester = int.Parse(comboBoxSemester.SelectedItem.ToString());
+            if (comboBoxSubjects.SelectedItem == null || comboBoxType.SelectedIndex == null)
+                return;
+            var subject = comboBoxSubjects.SelectedItem.ToString();
+            var comboBoxTypeIndex = comboBoxType.SelectedIndex;
+            using (UniversityContext db = new UniversityContext())
+            {
+                dataGridViewMarks.Rows.Clear();
+                var ds = db.DistributionSubjects.Where(d => d.IdGroupStudents == Parent.IdGroup).Select(d => d.IdSubject).ToList();
+                var sub = db.Subjects.Where(s => ds.Contains(s.Id)).Where(s => s.Semester == Semester && s.Name == subject).FirstOrDefault();
+                List<Mark> marks = new List<Mark>();
+                List<MarkOfSubject> marks1 = new List<MarkOfSubject>();
+                if (sub != null)
+                {
+                    switch (comboBoxTypeIndex)
+                    {
+                        case 0:
+                            {
+                                marks = db.Marks.Where(d => d.Id == sub.Id).Include(m => m.IdStudentNavigation).ToList();
+                                for(var i = 0; i< marks.Count; i++)
+                                {
+                                    dataGridViewMarks.Rows.Add(marks[i].IdStudentNavigation.FirstName + " " +
+                                        marks[i].IdStudentNavigation.Surname + " " + marks[i].IdStudentNavigation.Patronymic,
+                                        marks[i].Mark1,
+                                        marks[i].DateReceiving,
+                                        " "
+
+                                        );
+
+                                }
+                                break;
+                            }
+                        case 1:
+                            {
+                                marks1 = db.MarkOfSubjects.Where(d => d.Id == sub.Id && (d.IsExam ?? false)).Include(m => m.IdStudentNavigation).ToList();
+                                for (var i = 0; i < marks.Count; i++)
+                                {
+                                    dataGridViewMarks.Rows.Add(marks1[i].IdStudentNavigation.FirstName + " " +
+                                        marks1[i].IdStudentNavigation.Surname + " " + marks1[i].IdStudentNavigation.Patronymic,
+                                        marks1[i].Mark,
+                                        marks1[i].DateReceiving,
+                                        " "
+
+                                        );
+                                }
+                                break;
+                            }
+                        case 2:
+                            {
+                                marks1 = db.MarkOfSubjects.Where(d => d.Id == sub.Id && !(d.IsExam ?? false)).Include(m => m.IdStudentNavigation).ToList();
+                                for (var i = 0; i < marks.Count; i++)
+                                {
+                                    dataGridViewMarks.Rows.Add(marks1[i].IdStudentNavigation.FirstName + " " +
+                                        marks1[i].IdStudentNavigation.Surname + " " + marks1[i].IdStudentNavigation.Patronymic,
+                                        marks1[i].Mark,
+                                        marks1[i].DateReceiving,
+                                        " "
+
+                                        );
+                                }
+                                break;
+                            }
+                    }
+                    
+
+                }
+            }
         }
     }
 }

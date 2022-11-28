@@ -247,8 +247,12 @@ namespace CourseWork.Controls
                     }
                 case "GetStudentsWithMarkExam":
                     {
-                        AddNewElement("label", "ID группы");
-                        AddNewElement("textBox", "ID группы");
+                        using(UniversityContext db = new UniversityContext())
+                        {
+                            var groups = db.GroupStudents.Select(x => x.Number).ToArray();
+                            AddNewElement("label", "ID группы");
+                            AddNewElement("comboBox", "ID группы", groups);
+                        }
 
                         AddNewElement("label", "ID дисциплины");
                         AddNewElement("textBox", "ID дисциплины");
@@ -298,7 +302,7 @@ namespace CourseWork.Controls
                     }
             }
         }
-        
+        DataGridView oldDataGridView = new DataGridView();
         public void ReturnData(object? sender, EventArgs e)
         {
             using(UniversityContext db = new UniversityContext())
@@ -453,10 +457,14 @@ namespace CourseWork.Controls
                         }
                     case "GetStudentsWithMarkExam":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
                             int param2 = Convert.ToInt32((string)parameters[1]);
                             int param3 = Convert.ToInt32((string)parameters[2]);
                             int param4 = Convert.ToInt32((string)parameters[3]);
+
+                            
+                            int param1 = db.GroupStudents.Where(x => x.Number == comdoboxSelectedItem).FirstOrDefault().Id;
+
                             var a = db.GetStudentsWithMarkExam(param1, param2, param3, param4);
                             var list = a.ToList();
 
@@ -497,6 +505,8 @@ namespace CourseWork.Controls
                 dataGridView.RowHeadersVisible = false;
                 dataGridView.BackgroundColor = Color.White;
                 dataGridView.AllowUserToAddRows = false;
+                this.Controls.Remove(oldDataGridView);
+                oldDataGridView = dataGridView;
                 this.Controls.Add(dataGridView);
                 for(var i = 0; i < dataGridView.ColumnCount; i++)
                 {
@@ -508,11 +518,12 @@ namespace CourseWork.Controls
             }
         }
 
-        public void AddNewElement(string element, string textInLabel)
+        public void AddNewElement(string element, string textInLabel, string[] valueForCombobox = null)
         {
             currentElement++;
             switch (element)
             {
+
                 case "label":
                     {
                         Label label = new Label();
@@ -555,6 +566,21 @@ namespace CourseWork.Controls
                         this.Controls.Add(textBox);
                         break;
                     }
+                case "comboBox":
+                    {
+                        currentElementInParametersArray++;
+                        ComboBox textBox = new ComboBox();
+                        textBox.Font = new Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+                        textBox.Name = (currentElementInParametersArray - 1).ToString();
+                        textBox.Size = new Size(150, 40);
+                        textBox.Location = new Point(positionElements[0, currentElement - 1], positionElements[1, currentElement - 1]);
+                        textBox.MaximumSize = new Size(243, 0);
+                        textBox.AutoSize = true;
+                        textBox.SelectedIndexChanged += UpdateFieldSelect;
+                        textBox.Items.AddRange(valueForCombobox);
+                        this.Controls.Add(textBox);
+                        break;
+                    }
             }
         }
         void UpdateField(object? sender, EventArgs e)
@@ -568,6 +594,16 @@ namespace CourseWork.Controls
             var a = (DateTimePicker)sender;
             var index = Convert.ToInt32(a.Name);
             parameters[index] = a.Value;
+        }
+        void UpdateFieldSelect(object? sender, EventArgs e)
+        {
+            var a = (ComboBox)sender;
+            if(a.SelectedItem != null)
+            {
+                var value = a.SelectedItem.ToString();
+                var index = Convert.ToInt32(a.Name);
+                parameters[index] = value;
+            }
         }
     }
 }
