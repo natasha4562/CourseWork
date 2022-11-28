@@ -29,6 +29,7 @@ namespace CourseWork
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,7 +42,11 @@ namespace CourseWork
             this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountChildren = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Salary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeachers)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -143,6 +148,29 @@ namespace CourseWork
             this.Salary.Name = "Salary";
             this.Salary.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuAdd,
+            this.toolStripMenuDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(146, 52);
+            // 
+            // toolStripMenuAdd
+            // 
+            this.toolStripMenuAdd.Name = "toolStripMenuAdd";
+            this.toolStripMenuAdd.Size = new System.Drawing.Size(145, 24);
+            this.toolStripMenuAdd.Text = "Добавить";
+            this.toolStripMenuAdd.Click += new System.EventHandler(this.toolStripMenuAdd_Click);
+            // 
+            // toolStripMenuDelete
+            // 
+            this.toolStripMenuDelete.Name = "toolStripMenuDelete";
+            this.toolStripMenuDelete.Size = new System.Drawing.Size(145, 24);
+            this.toolStripMenuDelete.Text = "Удалить";
+            this.toolStripMenuDelete.Click += new System.EventHandler(this.toolStripMenuDelete_Click);
+            // 
             // GraduateStudents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -152,6 +180,7 @@ namespace CourseWork
             this.Name = "GraduateStudents";
             this.Size = new System.Drawing.Size(928, 700);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeachers)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +198,8 @@ namespace CourseWork
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfBirth;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountChildren;
         private System.Windows.Forms.DataGridViewTextBoxColumn Salary;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuAdd;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuDelete;
     }
 }
