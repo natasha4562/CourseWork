@@ -46,9 +46,13 @@ namespace CourseWork.Controls
             {
                 case "GetStudentInGroup":
                     {
-                        
-                        AddNewElement("label", "ID группы");
-                        AddNewElement("textBox", "ID группы");
+
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var groups = db.GroupStudents.Select(x => x.Number).ToArray();
+                            AddNewElement("label", "Группа");
+                            AddNewElement("comboBox", "Группа", groups);
+                        }
 
                         AddNewElement("label", "Пол");
                         AddNewElement("textBox", "Пол");
@@ -62,8 +66,12 @@ namespace CourseWork.Controls
                         AddNewElement("label", "Кол-во детей");
                         AddNewElement("textBox", "Кол-во детей");
 
-                        AddNewElement("label", "ID ф. обуч.");
-                        AddNewElement("textBox", "ID ф. обуч.");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var form = db.StudyForms.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Форма обуч.");
+                            AddNewElement("comboBox", "Форма обуч.", form);
+                        }
 
                         AddNewElement("label", "Мин. стипендия");
                         AddNewElement("textBox", "Мин. стипендия");
@@ -76,8 +84,12 @@ namespace CourseWork.Controls
                     }
                 case "GetCountStudentsInGroup":
                     {
-                        AddNewElement("label", "ID группы");
-                        AddNewElement("textBox", "ID группы");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var groups = db.GroupStudents.Select(x => x.Number).ToArray();
+                            AddNewElement("label", "Группа");
+                            AddNewElement("comboBox", "Группа", groups);
+                        }
 
                         AddNewElement("label", "Пол");
                         AddNewElement("textBox", "Пол");
@@ -91,8 +103,12 @@ namespace CourseWork.Controls
                         AddNewElement("label", "Кол-во детей");
                         AddNewElement("textBox", "Кол-во детей");
 
-                        AddNewElement("label", "ID ф. обуч.");
-                        AddNewElement("textBox", "ID ф. обуч.");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var form = db.StudyForms.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Форма обуч.");
+                            AddNewElement("comboBox", "Форма обуч.", form);
+                        }
 
                         AddNewElement("label", "Мин. стипендия");
                         AddNewElement("textBox", "Мин. стипендия");
@@ -104,8 +120,12 @@ namespace CourseWork.Controls
                     }
                 case "GetGraduateStudentsWithDissertation":
                     {
-                        AddNewElement("label", "ID кафедры");
-                        AddNewElement("textBox", "ID кафедры");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var departments = db.Departments.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Кафедра");
+                            AddNewElement("comboBox", "Кафедра", departments);
+                        }
 
                         AddNewElement("label", "Пол");
                         AddNewElement("textBox", "Пол");
@@ -131,8 +151,12 @@ namespace CourseWork.Controls
                     }
                 case "GetCountGraduateStudentsWithDissertation":
                     {
-                        AddNewElement("label", "ID кафедры");
-                        AddNewElement("textBox", "ID кафедры");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var departments = db.Departments.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Кафедра");
+                            AddNewElement("comboBox", "Кафедра", departments);
+                        }
 
                         AddNewElement("label", "Пол");
                         AddNewElement("textBox", "Пол");
@@ -158,8 +182,12 @@ namespace CourseWork.Controls
                     }
                 case "GetDissertation":
                     {
-                        AddNewElement("label", "ID кафедры");
-                        AddNewElement("textBox", "ID кафедры");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var departments = db.Departments.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Кафедра");
+                            AddNewElement("comboBox", "Кафедра", departments);
+                        }
 
                         label1.Text = "Получить перечень и общее число тем кандидатских и докторских диссертаций, защитивших " +
                             "сотрудниками указанной кафедры либо указанного факультета.";
@@ -168,8 +196,12 @@ namespace CourseWork.Controls
                     }
                 case "GetDepartment":
                     {
-                        AddNewElement("label", "ID группы");
-                        AddNewElement("textBox", "ID группы");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var groups = db.GroupStudents.Select(x => x.Number).ToArray();
+                            AddNewElement("label", "Группа");
+                            AddNewElement("comboBox", "Группа", groups);
+                        }
 
                         AddNewElement("label", "Семестр");
                         AddNewElement("textBox", "Семестр");
@@ -181,11 +213,19 @@ namespace CourseWork.Controls
                     }
                 case "GetTeachersStudiesGroup":
                     {
-                        AddNewElement("label", "ID группы");
-                        AddNewElement("textBox", "ID группы");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var groups = db.GroupStudents.Select(x => x.Number).ToArray();
+                            AddNewElement("label", "Группа");
+                            AddNewElement("comboBox", "Группа", groups);
+                        }
 
-                        AddNewElement("label", "ID дисциплины");
-                        AddNewElement("textBox", "ID дисциплины");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var subjects = db.Subjects.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Дисциплина");
+                            AddNewElement("comboBox", "Дисциплина", subjects);
+                        }
 
                         label1.Text = "Получить список и общее число преподавателей, проводивших (проводящих) занятия по указанной " +
                             "дисциплине в указанной группе либо на указанном курсе указанного факультета.";
@@ -194,11 +234,15 @@ namespace CourseWork.Controls
                     }
                 case "GetTeachersStudiesGroupInSem":
                     {
-                        AddNewElement("label", "ID группы");
-                        AddNewElement("textBox", "ID группы");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var groups = db.GroupStudents.Select(x => x.Number).ToArray();
+                            AddNewElement("label", "Группа");
+                            AddNewElement("comboBox", "Группа", groups);
+                        }
 
-                        AddNewElement("label", "ID дисциплины");
-                        AddNewElement("textBox", "ID дисциплины");
+                        AddNewElement("label", "Семестр");
+                        AddNewElement("textBox", "Семестр");
 
                         label1.Text = "Получить перечень и общее число преподавателей проводивших (проводящих) лекционные, " +
                             "семинарские и другие виды занятий в указанной группе либо на указанном курсе указанного " +
@@ -208,11 +252,15 @@ namespace CourseWork.Controls
                     }
                 case "GetStudentsPassExamWithMark":
                     {
-                        AddNewElement("label", "ID дисциплины");
-                        AddNewElement("textBox", "ID дисциплины");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var subjects = db.Subjects.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Дисциплина");
+                            AddNewElement("comboBox", "Дисциплина", subjects);
+                        }
 
-                        AddNewElement("label", "ID оценки");
-                        AddNewElement("textBox", "ID оценки");
+                        AddNewElement("label", "Оценка");
+                        AddNewElement("textBox", "Оценка");
 
                         label1.Text = "Получить список и общее число студентов указанных групп, сдавших зачет либо экзамен по указанной " +
                             "дисциплине с указанной оценкой.";
@@ -221,8 +269,12 @@ namespace CourseWork.Controls
                     }
                 case "GetStudentsPassExamsGood":
                     {
-                        AddNewElement("label", "ID группы");
-                        AddNewElement("textBox", "ID группы");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var groups = db.GroupStudents.Select(x => x.Number).ToArray();
+                            AddNewElement("label", "Группа");
+                            AddNewElement("comboBox", "Группа", groups);
+                        }
 
                         label1.Text = "Получить список и общее число студентов указанных групп или указанного курса указанного " +
                             "факультета, сдавших указанную сессию на отлично, без троек, без двоек.";
@@ -231,11 +283,19 @@ namespace CourseWork.Controls
                     }
                 case "GetTeachersExam":
                     {
-                        AddNewElement("label", "ID группы");
-                        AddNewElement("textBox", "ID группы");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var groups = db.GroupStudents.Select(x => x.Number).ToArray();
+                            AddNewElement("label", "Группа");
+                            AddNewElement("comboBox", "Группа", groups);
+                        }
 
-                        AddNewElement("label", "ID дисциплины");
-                        AddNewElement("textBox", "ID дисциплины");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var subjects = db.Subjects.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Дисциплина");
+                            AddNewElement("comboBox", "Дисциплина", subjects);
+                        }
 
                         AddNewElement("label", "Семестр");
                         AddNewElement("textBox", "Семестр");
@@ -250,13 +310,17 @@ namespace CourseWork.Controls
                         using(UniversityContext db = new UniversityContext())
                         {
                             var groups = db.GroupStudents.Select(x => x.Number).ToArray();
-                            AddNewElement("label", "ID группы");
-                            AddNewElement("comboBox", "ID группы", groups);
+                            AddNewElement("label", "Группа");
+                            AddNewElement("comboBox", "Группа", groups);
                         }
 
-                        AddNewElement("label", "ID дисциплины");
-                        AddNewElement("textBox", "ID дисциплины");
-
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var subjects = db.Subjects.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Дисциплина");
+                            AddNewElement("comboBox", "Дисциплина", subjects);
+                        }
+                        
                         AddNewElement("label", "Оценка");
                         AddNewElement("textBox", "Оценка");
 
@@ -271,9 +335,13 @@ namespace CourseWork.Controls
                     }
                 case "GetStudentsWithGrWorkInTeacher":
                     {
-                        AddNewElement("label", "ID преподавателя");
-                        AddNewElement("textBox", "ID преподавателя");
-
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var teachers = db.Teachers.Select(x => x.Surname + " " + x.FirstName + " " + x.Patronymic).ToArray();
+                            AddNewElement("label", "Преподаватель");
+                            AddNewElement("comboBox", "Преподаватель", teachers);
+                        }
+                        
                         label1.Text = "Получить список студентов и тем дипломных работ, выполняемых ими на указанной кафедре либо у " +
                             "указанного преподавателя.";
 
@@ -281,8 +349,12 @@ namespace CourseWork.Controls
                     }
                 case "GetTeachersWithGrWork":
                     {
-                        AddNewElement("label", "ID кафедры");
-                        AddNewElement("textBox", "ID кафедры");
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var departments = db.Departments.Select(x => x.Name).ToArray();
+                            AddNewElement("label", "Кафедра");
+                            AddNewElement("comboBox", "Кафедра", departments);
+                        }
 
                         label1.Text = "Получить список руководителей дипломных работ с указанной кафедры, либо факультета полностью и " +
                             "раздельно по некоторым категориям преподавателей.";
@@ -291,9 +363,13 @@ namespace CourseWork.Controls
                     }
                 case "GetTeachersWorkload":
                     {
-                        AddNewElement("label", "ID вида занятия");
-                        AddNewElement("textBox", "ID вида занятия");
-
+                        using (UniversityContext db = new UniversityContext())
+                        {
+                            var type = db.TypeOccupations.Select(t => t.Name).ToArray();
+                            AddNewElement("label", "Вид занятия");
+                            AddNewElement("comboBox", "Вид занятия", type);
+                        }
+                        
                         label1.Text = "Получить нагрузку преподавателей (название дисциплины, количество часов), ее объем по отдельным " +
                             "видам занятий и общую нагрузку в указанном семестре для конкретного преподавателя либо для " +
                             "преподавателей указанной кафедры.";
@@ -314,12 +390,14 @@ namespace CourseWork.Controls
                 {
                     case "GetStudentInGroup":
                         {
-                            int @GroupId = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int @GroupId = db.GroupStudents.Where(x => x.Number == comdoboxSelectedItem).FirstOrDefault().Id;
                             string @StudentGender = (string)parameters[1];
                             DateTime @StudentYearOfBirthdate = Convert.ToDateTime(parameters[2]);
                             int @MinAge = Convert.ToInt32((string)parameters[3]);
                             int @AmountChildren = Convert.ToInt32((string)parameters[4]);
-                            int @IdStudyForm = Convert.ToInt32((string)parameters[5]);
+                            string comdoboxSelectedStudyForm = (string)parameters[5];
+                            int @IdStudyForm = db.StudyForms.Where(x => x.Name == comdoboxSelectedStudyForm).FirstOrDefault().Id;
                             int @MinAmountScholarship = Convert.ToInt32((string)parameters[6]);
 
                             var a = db.GetStudentInGroup(@GroupId, @StudentGender, @StudentYearOfBirthdate.Date, 
@@ -333,12 +411,14 @@ namespace CourseWork.Controls
                         }
                     case "GetCountStudentsInGroup":
                         {
-                            int @GroupId = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int @GroupId = db.GroupStudents.Where(x => x.Number == comdoboxSelectedItem).FirstOrDefault().Id;
                             string @StudentGender = (string)parameters[1];
                             DateTime @StudentYearOfBirthdate = Convert.ToDateTime(parameters[2]);
                             int @MinAge = Convert.ToInt32((string)parameters[3]);
                             int @AmountChildren = Convert.ToInt32((string)parameters[4]);
-                            int @IdStudyForm = Convert.ToInt32((string)parameters[5]);
+                            string comdoboxSelectedStudyForm = (string)parameters[5];
+                            int @IdStudyForm = db.StudyForms.Where(x => x.Name == comdoboxSelectedStudyForm).FirstOrDefault().Id;
                             int @MinAmountScholarship = Convert.ToInt32((string)parameters[6]);
 
                             var a = db.GetCountStudentsInGroup(@GroupId, @StudentGender, @StudentYearOfBirthdate,
@@ -353,7 +433,8 @@ namespace CourseWork.Controls
                         }
                     case "GetGraduateStudentsWithDissertation":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int param1 = db.Departments.Where(x => x.Name == comdoboxSelectedItem).FirstOrDefault().Id;
                             string param2 = (string)parameters[1];
                             DateTime param3 = Convert.ToDateTime(parameters[2]);
                             int param4 = Convert.ToInt32((string)parameters[3]);
@@ -369,7 +450,8 @@ namespace CourseWork.Controls
                         }
                     case "GetCountGraduateStudentsWithDissertation":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int param1 = db.Departments.Where(x => x.Name == comdoboxSelectedItem).FirstOrDefault().Id;
                             string param2 = (string)parameters[1];
                             DateTime param3 = Convert.ToDateTime(parameters[2]);
                             int param4 = Convert.ToInt32((string)parameters[3]);
@@ -388,8 +470,10 @@ namespace CourseWork.Controls
                         }
                     case "GetDissertation":
                         {
-                            int IdDepartment = Convert.ToInt32((string)parameters[0]);
-                            var a = db.GetDissertation(IdDepartment);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int param1 = db.Departments.Where(x => x.Name == comdoboxSelectedItem).FirstOrDefault().Id;
+
+                            var a = db.GetDissertation(param1);
                             var list = a.ToList();
 
                             source.DataSource = list;
@@ -397,8 +481,11 @@ namespace CourseWork.Controls
                         }
                     case "GetDepartment":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
                             int param2 = Convert.ToInt32((string)parameters[1]);
+
+                            int param1 = db.GroupStudents.Where(x => x.Number == comdoboxSelectedItem).FirstOrDefault().Id;
+
                             var a = db.GetDepartment(param1, param2);
                             var list = a.ToList();
 
@@ -407,8 +494,12 @@ namespace CourseWork.Controls
                         }
                     case "GetTeachersStudiesGroup":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
-                            int param2 = Convert.ToInt32((string)parameters[1]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            string comboboxSelectedSubjects = (string)parameters[1];
+
+                            int param1 = db.GroupStudents.Where(x => x.Number == comdoboxSelectedItem).FirstOrDefault().Id;
+                            int param2 = db.Subjects.Where(s => s.Name == comboboxSelectedSubjects).FirstOrDefault().Id;
+
                             var a = db.GetTeachersStudiesGroup(param1, param2);
                             var list = a.ToList();
 
@@ -417,8 +508,11 @@ namespace CourseWork.Controls
                         }
                     case "GetTeachersStudiesGroupInSem":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
                             int param2 = Convert.ToInt32((string)parameters[1]);
+
+                            int param1 = db.GroupStudents.Where(x => x.Number == comdoboxSelectedItem).FirstOrDefault().Id;
+
                             var a = db.GetTeachersStudiesGroupInSem(param1, param2);
                             var list = a.ToList();
 
@@ -427,8 +521,10 @@ namespace CourseWork.Controls
                         }
                     case "GetStudentsPassExamWithMark":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int param1 = db.Subjects.Where(s => s.Name == comdoboxSelectedItem).FirstOrDefault().Id;
                             int param2 = Convert.ToInt32((string)parameters[1]);
+
                             var a = db.GetStudentsPassExamWithMark(param1, param2);
                             var list = a.ToList();
 
@@ -437,7 +533,9 @@ namespace CourseWork.Controls
                         }
                     case "GetStudentsPassExamsGood":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int param1 = db.GroupStudents.Where(x => x.Number == comdoboxSelectedItem).FirstOrDefault().Id;
+
                             var a = db.GetStudentsPassExamsGood(param1);
                             var list = a.ToList();
 
@@ -446,9 +544,13 @@ namespace CourseWork.Controls
                         }
                     case "GetTeachersExam":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
-                            int param2 = Convert.ToInt32((string)parameters[1]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            string comboboxSelectedSubjects = (string)parameters[1];
                             int param3 = Convert.ToInt32((string)parameters[2]);
+
+                            int param1 = db.GroupStudents.Where(x => x.Number == comdoboxSelectedItem).FirstOrDefault().Id;
+                            int param2 = db.Subjects.Where(s => s.Name == comboboxSelectedSubjects).FirstOrDefault().Id;
+
                             var a = db.GetTeachersExam(param1, param2, param3);
                             var list = a.ToList();
 
@@ -458,12 +560,13 @@ namespace CourseWork.Controls
                     case "GetStudentsWithMarkExam":
                         {
                             string comdoboxSelectedItem = (string)parameters[0];
-                            int param2 = Convert.ToInt32((string)parameters[1]);
+                            string comboboxSelectedSubjects = (string)parameters[1];
                             int param3 = Convert.ToInt32((string)parameters[2]);
                             int param4 = Convert.ToInt32((string)parameters[3]);
 
                             
                             int param1 = db.GroupStudents.Where(x => x.Number == comdoboxSelectedItem).FirstOrDefault().Id;
+                            int param2 = db.Subjects.Where(s => s.Name == comboboxSelectedSubjects).FirstOrDefault().Id;
 
                             var a = db.GetStudentsWithMarkExam(param1, param2, param3, param4);
                             var list = a.ToList();
@@ -473,7 +576,9 @@ namespace CourseWork.Controls
                         }
                     case "GetStudentsWithGrWorkInTeacher":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int param1 = db.Teachers.Where(x => x.Surname + " " + x.FirstName + " " + x.Patronymic == comdoboxSelectedItem).FirstOrDefault().Id;
+
                             var a = db.GetStudentsWithGrWorkInTeacher(param1);
                             var list = a.ToList();
 
@@ -482,7 +587,9 @@ namespace CourseWork.Controls
                         }
                     case "GetTeachersWithGrWork":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int param1 = db.Departments.Where(x => x.Name == comdoboxSelectedItem).FirstOrDefault().Id;
+
                             var a = db.GetTeachersWithGrWork(param1);
                             var list = a.ToList();
 
@@ -491,7 +598,9 @@ namespace CourseWork.Controls
                         }
                     case "GetTeachersWorkload":
                         {
-                            int param1 = Convert.ToInt32((string)parameters[0]);
+                            string comdoboxSelectedItem = (string)parameters[0];
+                            int param1 = db.TypeOccupations.Where(x => x.Name == comdoboxSelectedItem).FirstOrDefault().Id;
+
                             var a = db.GetTeachersWorkload(param1);
                             var list = a.ToList();
 
@@ -578,6 +687,8 @@ namespace CourseWork.Controls
                         textBox.AutoSize = true;
                         textBox.SelectedIndexChanged += UpdateFieldSelect;
                         textBox.Items.AddRange(valueForCombobox);
+                        textBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                        textBox.SelectedIndex = 0;
                         this.Controls.Add(textBox);
                         break;
                     }

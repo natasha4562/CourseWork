@@ -34,7 +34,7 @@ namespace CourseWork.Controls
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(47, 588);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(829, 91);

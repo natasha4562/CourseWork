@@ -154,7 +154,6 @@ namespace CourseWork
             this.Controls.Add(this.dataGridViewGrWork);
             this.Controls.Add(this.button_Back);
             this.Controls.Add(this.label1);
-            this.Name = "GrWork";
             this.Size = new System.Drawing.Size(928, 700);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrWork)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
