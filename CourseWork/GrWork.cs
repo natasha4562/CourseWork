@@ -86,7 +86,7 @@ namespace CourseWork
         {
             Parent.Controls.Remove(this);
 
-            GraduateWorkAdd graduateWork = new GraduateWorkAdd(Parent);
+            GraduateWorkAdd graduateWork = new GraduateWorkAdd(Parent, elemForm);
             graduateWork.Location = new Point(250, 49);
             Parent.Controls.Add(graduateWork);
             Parent.ChildElem = graduateWork;
@@ -94,7 +94,18 @@ namespace CourseWork
 
         private void toolStripMenuEdit_Click(object sender, EventArgs e)
         {
+            using (UniversityContext db = new UniversityContext())
+            {
+                int id = listIdDrWorks[dataGridViewGrWork.CurrentCell.RowIndex];
+                var gw = db.GraduateWorks.Where(g => g.Id == id).FirstOrDefault();
 
+                Parent.Controls.Remove(this);
+
+                GraduateWorkAdd work = new GraduateWorkAdd(Parent, elemForm, gw);
+                work.Location = new Point(250, 49);
+                Parent.Controls.Add(work);
+                Parent.ChildElem = work;
+            }
         }
 
         private void toolStripMenuDelete_Click(object sender, EventArgs e)

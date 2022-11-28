@@ -41,7 +41,6 @@ namespace CourseWork
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.buttonDisciplines = new System.Windows.Forms.Button();
             this.buttonDiploma = new System.Windows.Forms.Button();
             this.labelSurname = new System.Windows.Forms.Label();
@@ -182,16 +181,6 @@ namespace CourseWork
             this.label10.Size = new System.Drawing.Size(216, 31);
             this.label10.TabIndex = 25;
             this.label10.Text = "Заработная плата:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(414, 439);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(271, 31);
-            this.label11.TabIndex = 26;
-            this.label11.Text = "Научная деятельность:";
             // 
             // buttonDisciplines
             // 
@@ -345,7 +334,6 @@ namespace CourseWork
             this.Controls.Add(this.labelSurname);
             this.Controls.Add(this.buttonDiploma);
             this.Controls.Add(this.buttonDisciplines);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -379,7 +367,6 @@ namespace CourseWork
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button buttonDisciplines;
         private System.Windows.Forms.Button buttonDiploma;
         private System.Windows.Forms.Label labelSurname;
