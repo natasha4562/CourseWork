@@ -55,11 +55,13 @@ namespace CourseWork
 
         private void comboBoxSubjects_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dataGridViewMarks.Rows.Clear();
             ReturnData();
         }
 
         private void comboBoxSemester_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dataGridViewMarks.Rows.Clear();
             Semester = int.Parse(comboBoxSemester.SelectedItem.ToString());
             comboBoxSubjects.Items.Clear();
             using (UniversityContext db = new UniversityContext())
@@ -76,6 +78,7 @@ namespace CourseWork
 
         private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dataGridViewMarks.Rows.Clear();
             ReturnData();
         }
 
@@ -99,13 +102,13 @@ namespace CourseWork
                     {
                         case 0:
                             {
-                                marks = db.Marks.Where(d => d.Id == sub.Id).Include(m => m.IdStudentNavigation).ToList();
+                                marks = db.Marks.Where(d => d.IdSubject == sub.Id).Include(m => m.IdStudentNavigation).ToList();
                                 for(var i = 0; i< marks.Count; i++)
                                 {
                                     dataGridViewMarks.Rows.Add(marks[i].IdStudentNavigation.FirstName + " " +
                                         marks[i].IdStudentNavigation.Surname + " " + marks[i].IdStudentNavigation.Patronymic,
                                         marks[i].Mark1,
-                                        marks[i].DateReceiving,
+                                        marks1[i].DateReceiving.Value.ToString("dd.MM.yyyy"),
                                         " "
 
                                         );
@@ -115,14 +118,14 @@ namespace CourseWork
                             }
                         case 1:
                             {
-                                marks1 = db.MarkOfSubjects.Where(d => d.Id == sub.Id && (d.IsExam ?? false)).Include(m => m.IdStudentNavigation).ToList();
-                                for (var i = 0; i < marks.Count; i++)
+                                marks1 = db.MarkOfSubjects.Include(m => m.IdStatusOfExamNavigation).Where(d => d.IdSubject == sub.Id && (d.IsExam ?? false)).Include(m => m.IdStudentNavigation).ToList();
+                                for (var i = 0; i < marks1.Count; i++)
                                 {
                                     dataGridViewMarks.Rows.Add(marks1[i].IdStudentNavigation.FirstName + " " +
                                         marks1[i].IdStudentNavigation.Surname + " " + marks1[i].IdStudentNavigation.Patronymic,
                                         marks1[i].Mark,
-                                        marks1[i].DateReceiving,
-                                        " "
+                                        marks1[i].DateReceiving.Value.ToString("dd.MM.yyyy"),
+                                        marks1[i].IdStatusOfExamNavigation.Status
 
                                         );
                                 }
@@ -130,14 +133,14 @@ namespace CourseWork
                             }
                         case 2:
                             {
-                                marks1 = db.MarkOfSubjects.Where(d => d.Id == sub.Id && !(d.IsExam ?? false)).Include(m => m.IdStudentNavigation).ToList();
-                                for (var i = 0; i < marks.Count; i++)
+                                marks1 = db.MarkOfSubjects.Include(m => m.IdStatusOfExamNavigation).Where(d => d.IdSubject == sub.Id && !(d.IsExam ?? false)).Include(m => m.IdStudentNavigation).ToList();
+                                for (var i = 0; i < marks1.Count; i++)
                                 {
                                     dataGridViewMarks.Rows.Add(marks1[i].IdStudentNavigation.FirstName + " " +
                                         marks1[i].IdStudentNavigation.Surname + " " + marks1[i].IdStudentNavigation.Patronymic,
                                         marks1[i].Mark,
-                                        marks1[i].DateReceiving,
-                                        " "
+                                        marks1[i].DateReceiving.Value.ToString("dd.MM.yyyy"),
+                                        marks1[i].IdStatusOfExamNavigation.Status
 
                                         );
                                 }
