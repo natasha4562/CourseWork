@@ -77,7 +77,7 @@ namespace CourseWork
         {
             Parent.Controls.Remove(this);
 
-            Subjects subject = new Subjects(Parent, idTeachers[comboBoxTeachers.SelectedIndex], 1);
+            Subjects subject = new Subjects(Parent, 1);
             subject.Location = new Point(250, 49);
             Parent.Controls.Add(subject);
             Parent.ChildElem = subject;

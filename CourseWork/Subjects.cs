@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWork.ControlsAdd;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,14 +15,14 @@ namespace CourseWork
     public partial class Subjects : UserControl
     {
         public Form1 Parent { get; set; }
-        private int idTeacher;
         private int elemForm;
-        public Subjects(Form1 f, int _id, int _num)
+        private List<int> listIdSubjects = new List<int>();
+        public Subjects(Form1 f, int _num)
         {
             InitializeComponent();
             Parent = f;
-            idTeacher = _id;
             elemForm = _num;
+            dataGridViewSubjects.ContextMenuStrip = contextMenuStrip1;
             LoadSubject();
         }
 
@@ -31,17 +32,18 @@ namespace CourseWork
             {
                 if(elemForm == 1)
                 {
-                    var ds = db.DistributionSubjects.Where(d => d.IdTeacher == idTeacher).Select(d => d.IdSubject).ToList();
+                    var ds = db.DistributionSubjects.Where(d => d.IdTeacher == Parent.IdTeacher).Select(d => d.IdSubject).ToList();
                     var sub = db.Subjects.Where(s => ds.Contains(s.Id)).OrderBy(s => s.Semester).ThenBy(s => s.Name).ToList();
 
                     for (int i = 0; i < sub.Count; i++)
                     {
-                        var gs = db.DistributionSubjects.Where(d => d.IdSubject == sub[i].Id).FirstOrDefault().IdGroupStudents;
+                        var gs = db.DistributionSubjects.Where(d => d.IdSubject == sub[i].Id).FirstOrDefault();
 
                         dataGridViewSubjects.Rows.Add(sub[i].Name, sub[i].AmountHours, sub[i].Course, sub[i].Semester,
                             db.TypeOccupations.Where(t => t.Id == sub[i].IdTypeOccupation).FirstOrDefault().Name,
                             db.FormControls.Where(f => f.Id == sub[i].IdFormControl).FirstOrDefault().Name,
-                            db.GroupStudents.Where(g => g.Id == gs).FirstOrDefault().Number);
+                            db.GroupStudents.Where(g => g.Id == gs.IdGroupStudents).FirstOrDefault().Number);
+                        listIdSubjects.Add(gs.Id);
                     }
                 }
                 if(elemForm == 2)
@@ -54,13 +56,14 @@ namespace CourseWork
 
                     for (int i = 0; i < sub.Count; i++)
                     {
-                        var idTeach = db.DistributionSubjects.Where(d => d.IdSubject == sub[i].Id).FirstOrDefault().IdTeacher;
-                        var teach = db.Teachers.Where(t => t.Id == idTeach).FirstOrDefault();
+                        var te = db.DistributionSubjects.Where(d => d.IdSubject == sub[i].Id).FirstOrDefault();
+                        var teach = db.Teachers.Where(t => t.Id == te.IdTeacher).FirstOrDefault();
 
                         dataGridViewSubjects.Rows.Add(sub[i].Name, sub[i].AmountHours, sub[i].Course, sub[i].Semester,
                             db.TypeOccupations.Where(t => t.Id == sub[i].IdTypeOccupation).FirstOrDefault().Name,
                             db.FormControls.Where(f => f.Id == sub[i].IdFormControl).FirstOrDefault().Name,
                             teach.Surname + " " + teach.FirstName + " " + teach.Patronymic);
+                        listIdSubjects.Add(te.Id);
                     }
                 }
             }
@@ -87,17 +90,51 @@ namespace CourseWork
 
         private void toolStripMenuAdd_Click(object sender, EventArgs e)
         {
+            Parent.Controls.Remove(this);
 
+            DistributionSubjectAdd subject = new DistributionSubjectAdd(Parent, elemForm);
+            subject.Location = new Point(250, 49);
+            Parent.Controls.Add(subject);
+            Parent.ChildElem = subject;
         }
 
         private void toolStripMenuEdit_Click(object sender, EventArgs e)
         {
+            using (UniversityContext db = new UniversityContext())
+            {
+                int id = listIdSubjects[dataGridViewSubjects.CurrentCell.RowIndex];
+                var sub = db.DistributionSubjects.Where(s => s.Id == id).FirstOrDefault();
 
+                Parent.Controls.Remove(this);
+
+                DistributionSubjectAdd subject = new DistributionSubjectAdd(Parent, elemForm, sub);
+                subject.Location = new Point(250, 49);
+                Parent.Controls.Add(subject);
+                Parent.ChildElem = subject;
+            }
         }
 
         private void toolStripMenuDelete_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить данную запись?",
+                "Сообщение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+                using (UniversityContext db = new UniversityContext())
+                {
+                    int id = listIdSubjects[dataGridViewSubjects.CurrentCell.RowIndex];
 
+                    db.DistributionSubjects.Remove(db.DistributionSubjects.Where(s => s.Id == id).FirstOrDefault());
+                    db.SaveChanges();
+
+                    dataGridViewSubjects.Rows.RemoveAt(listIdSubjects.IndexOf(id));
+                    listIdSubjects.RemoveAt(listIdSubjects.IndexOf(id));
+                }
+            }
         }
     }
 }
