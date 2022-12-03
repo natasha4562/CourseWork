@@ -78,5 +78,15 @@ namespace CourseWork
             Parent.Controls.Add(depOrSpec);
             Parent.ChildElem = depOrSpec;
         }
+
+        private void labelSubjects_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            SubjectsAll subjects = new SubjectsAll(Parent);
+            subjects.Location = new Point(250, 49);
+            Parent.Controls.Add(subjects);
+            Parent.ChildElem = subjects;
+        }
     }
 }

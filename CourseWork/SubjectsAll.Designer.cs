@@ -1,7 +1,7 @@
 ﻿
 namespace CourseWork
 {
-    partial class Subjects
+    partial class SubjectsAll
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -40,7 +40,6 @@ namespace CourseWork
             this.Semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeOccupation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FormControl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +55,7 @@ namespace CourseWork
             this.label1.Location = new System.Drawing.Point(22, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(276, 45);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 4;
             this.label1.Text = "ДИСЦИПЛИНЫ";
             // 
             // button_Back
@@ -68,7 +67,7 @@ namespace CourseWork
             this.button_Back.Location = new System.Drawing.Point(793, 17);
             this.button_Back.Name = "button_Back";
             this.button_Back.Size = new System.Drawing.Size(120, 50);
-            this.button_Back.TabIndex = 16;
+            this.button_Back.TabIndex = 17;
             this.button_Back.Text = "Назад";
             this.button_Back.UseVisualStyleBackColor = false;
             this.button_Back.Click += new System.EventHandler(this.button_Back_Click);
@@ -86,8 +85,7 @@ namespace CourseWork
             this.Course,
             this.Semester,
             this.TypeOccupation,
-            this.FormControl,
-            this.Group});
+            this.FormControl});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -101,7 +99,7 @@ namespace CourseWork
             this.dataGridViewSubjects.RowHeadersWidth = 51;
             this.dataGridViewSubjects.RowTemplate.Height = 29;
             this.dataGridViewSubjects.Size = new System.Drawing.Size(928, 613);
-            this.dataGridViewSubjects.TabIndex = 17;
+            this.dataGridViewSubjects.TabIndex = 18;
             // 
             // NameSub
             // 
@@ -145,13 +143,6 @@ namespace CourseWork
             this.FormControl.Name = "FormControl";
             this.FormControl.ReadOnly = true;
             // 
-            // Group
-            // 
-            this.Group.HeaderText = "Группа";
-            this.Group.MinimumWidth = 6;
-            this.Group.Name = "Group";
-            this.Group.ReadOnly = true;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -183,14 +174,14 @@ namespace CourseWork
             this.toolStripMenuDelete.Text = "Удалить";
             this.toolStripMenuDelete.Click += new System.EventHandler(this.toolStripMenuDelete_Click);
             // 
-            // Subjects
+            // SubjectsAll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridViewSubjects);
             this.Controls.Add(this.button_Back);
             this.Controls.Add(this.label1);
-            this.Name = "Subjects";
+            this.Name = "SubjectsAll";
             this.Size = new System.Drawing.Size(928, 700);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSubjects)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -214,6 +205,5 @@ namespace CourseWork
         private System.Windows.Forms.DataGridViewTextBoxColumn Semester;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeOccupation;
         private System.Windows.Forms.DataGridViewTextBoxColumn FormControl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Group;
     }
 }
