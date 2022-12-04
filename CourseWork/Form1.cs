@@ -20,6 +20,7 @@ namespace CourseWork
         {
             InitializeComponent();
             InitializeId();
+            panelMenuF.ContextMenuStrip = contextMenuStrip2;
 
             Faculties_1 faculties_1 = new Faculties_1(this);
             faculties_1.Location = new Point(250, 49);
@@ -118,6 +119,16 @@ namespace CourseWork
                 ChildElem = specialties;
                 itemMenu1 = 2;
             }
+        }
+
+        private void toolStripMenuOpen_Click(object sender, EventArgs e)
+        {
+            this.Controls.Remove(ChildElem);
+
+            FacultiesAll faculties = new FacultiesAll(this);
+            faculties.Location = new Point(250, 49);
+            this.Controls.Add(faculties);
+            ChildElem = faculties;
         }
 
         private void itemsMenu1Faculties_Click(object sender, EventArgs e)

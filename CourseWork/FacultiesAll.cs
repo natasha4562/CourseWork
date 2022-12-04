@@ -12,30 +12,27 @@ using University;
 
 namespace CourseWork
 {
-    public partial class GroupsSt : UserControl
+    public partial class FacultiesAll : UserControl
     {
         public Form1 Parent { get; set; }
-        private List<int> listIdGroups = new List<int>();
-        public GroupsSt(Form1 f)
+        private List<int> listIdFaculties = new List<int>();
+        public FacultiesAll(Form1 f)
         {
             InitializeComponent();
             Parent = f;
-            dataGridViewGroups.ContextMenuStrip = contextMenuStrip1;
-            LoadGroups();
+            dataGridViewFaculties.ContextMenuStrip = contextMenuStrip1;
+            LoadFaculties();
         }
 
-        private void LoadGroups()
+        private void LoadFaculties()
         {
             using (UniversityContext db = new UniversityContext())
             {
-                var dep = db.Departments.Where(d => d.IdFaculty == Parent.IdFacult).Select(d => d.Id).ToList();
-                var sp = db.Specialities.Where(s => dep.Contains(s.IdDepartment ?? 0)).Select(s => s.Id).ToList();
-                var groups = db.GroupStudents.Where(g => sp.Contains(g.IdSpeciality ?? 0)).ToList();
-                for(int i = 0; i < groups.Count; i++)
+                var faculties = db.Faculties.ToList();
+                for(int i = 0; i < faculties.Count; i++)
                 {
-                    var spec = db.Specialities.Where(s => s.Id == groups[i].IdSpeciality).FirstOrDefault().Name;
-                    dataGridViewGroups.Rows.Add(groups[i].Number, groups[i].Course, groups[i].Semester, spec);
-                    listIdGroups.Add(groups[i].Id);
+                    dataGridViewFaculties.Rows.Add(faculties[i].Name);
+                    listIdFaculties.Add(faculties[i].Id);
                 }
             }
         }
@@ -54,25 +51,25 @@ namespace CourseWork
         {
             Parent.Controls.Remove(this);
 
-            GroupsAdd groups = new GroupsAdd(Parent);
-            groups.Location = new Point(250, 49);
-            Parent.Controls.Add(groups);
-            Parent.ChildElem = groups;
+            FacultyAdd faculty = new FacultyAdd(Parent);
+            faculty.Location = new Point(250, 49);
+            Parent.Controls.Add(faculty);
+            Parent.ChildElem = faculty;
         }
 
         private void toolStripMenuEdit_Click(object sender, EventArgs e)
         {
             using (UniversityContext db = new UniversityContext())
             {
-                int id = listIdGroups[dataGridViewGroups.CurrentCell.RowIndex];
-                var gs = db.GroupStudents.Where(s => s.Id == id).FirstOrDefault();
+                int id = listIdFaculties[dataGridViewFaculties.CurrentCell.RowIndex];
+                var fa = db.Faculties.Where(s => s.Id == id).FirstOrDefault();
 
                 Parent.Controls.Remove(this);
 
-                GroupsAdd groups = new GroupsAdd(Parent, gs);
-                groups.Location = new Point(250, 49);
-                Parent.Controls.Add(groups);
-                Parent.ChildElem = groups;
+                FacultyAdd faculty = new FacultyAdd(Parent, fa);
+                faculty.Location = new Point(250, 49);
+                Parent.Controls.Add(faculty);
+                Parent.ChildElem = faculty;
             }
         }
 
@@ -88,13 +85,13 @@ namespace CourseWork
             {
                 using (UniversityContext db = new UniversityContext())
                 {
-                    int id = listIdGroups[dataGridViewGroups.CurrentCell.RowIndex];
+                    int id = listIdFaculties[dataGridViewFaculties.CurrentCell.RowIndex];
 
-                    db.GroupStudents.Remove(db.GroupStudents.Where(s => s.Id == id).FirstOrDefault());
+                    db.Faculties.Remove(db.Faculties.Where(s => s.Id == id).FirstOrDefault());
                     db.SaveChanges();
 
-                    dataGridViewGroups.Rows.RemoveAt(listIdGroups.IndexOf(id));
-                    listIdGroups.RemoveAt(listIdGroups.IndexOf(id));
+                    dataGridViewFaculties.Rows.RemoveAt(listIdFaculties.IndexOf(id));
+                    listIdFaculties.RemoveAt(listIdFaculties.IndexOf(id));
                 }
             }
         }

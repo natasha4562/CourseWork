@@ -38,7 +38,10 @@ namespace CourseWork
             this.toolStripMenuItemQueries = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenuF = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -114,6 +117,21 @@ namespace CourseWork
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuOpen});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(236, 28);
+            // 
+            // toolStripMenuOpen
+            // 
+            this.toolStripMenuOpen.Name = "toolStripMenuOpen";
+            this.toolStripMenuOpen.Size = new System.Drawing.Size(235, 24);
+            this.toolStripMenuOpen.Text = "Открыть в новом окне";
+            this.toolStripMenuOpen.Click += new System.EventHandler(this.toolStripMenuOpen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -130,6 +148,7 @@ namespace CourseWork
             this.Text = "Главная";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,6 +164,8 @@ namespace CourseWork
         private System.Windows.Forms.Panel panelMenuF;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemQueries;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuOpen;
     }
 }
 
