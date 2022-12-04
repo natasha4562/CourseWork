@@ -37,6 +37,7 @@ namespace CourseWork
             this.labelSpecialties = new System.Windows.Forms.Label();
             this.labelTeachers = new System.Windows.Forms.Label();
             this.labelSubjects = new System.Windows.Forms.Label();
+            this.labelGroups = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@ namespace CourseWork
             this.labelDepartments.AutoSize = true;
             this.labelDepartments.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelDepartments.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelDepartments.Location = new System.Drawing.Point(22, 455);
+            this.labelDepartments.Location = new System.Drawing.Point(22, 430);
             this.labelDepartments.Name = "labelDepartments";
             this.labelDepartments.Size = new System.Drawing.Size(157, 38);
             this.labelDepartments.TabIndex = 3;
@@ -89,7 +90,7 @@ namespace CourseWork
             this.labelSpecialties.AutoSize = true;
             this.labelSpecialties.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelSpecialties.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelSpecialties.Location = new System.Drawing.Point(22, 515);
+            this.labelSpecialties.Location = new System.Drawing.Point(22, 480);
             this.labelSpecialties.Name = "labelSpecialties";
             this.labelSpecialties.Size = new System.Drawing.Size(270, 38);
             this.labelSpecialties.TabIndex = 4;
@@ -103,7 +104,7 @@ namespace CourseWork
             this.labelTeachers.AutoSize = true;
             this.labelTeachers.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTeachers.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelTeachers.Location = new System.Drawing.Point(22, 575);
+            this.labelTeachers.Location = new System.Drawing.Point(22, 530);
             this.labelTeachers.Name = "labelTeachers";
             this.labelTeachers.Size = new System.Drawing.Size(264, 38);
             this.labelTeachers.TabIndex = 5;
@@ -117,7 +118,7 @@ namespace CourseWork
             this.labelSubjects.AutoSize = true;
             this.labelSubjects.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelSubjects.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelSubjects.Location = new System.Drawing.Point(22, 635);
+            this.labelSubjects.Location = new System.Drawing.Point(22, 580);
             this.labelSubjects.Name = "labelSubjects";
             this.labelSubjects.Size = new System.Drawing.Size(232, 38);
             this.labelSubjects.TabIndex = 6;
@@ -126,11 +127,26 @@ namespace CourseWork
             this.labelSubjects.MouseLeave += new System.EventHandler(this.labelChahgeColor_MouseLeave);
             this.labelSubjects.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labelChahgeColor_MouseMove);
             // 
+            // labelGroups
+            // 
+            this.labelGroups.AutoSize = true;
+            this.labelGroups.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelGroups.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelGroups.Location = new System.Drawing.Point(22, 630);
+            this.labelGroups.Name = "labelGroups";
+            this.labelGroups.Size = new System.Drawing.Size(132, 38);
+            this.labelGroups.TabIndex = 7;
+            this.labelGroups.Text = "ГРУППЫ";
+            this.labelGroups.Click += new System.EventHandler(this.labelGroups_Click);
+            this.labelGroups.MouseLeave += new System.EventHandler(this.labelChahgeColor_MouseLeave);
+            this.labelGroups.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labelChahgeColor_MouseMove);
+            // 
             // Faculties_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.labelGroups);
             this.Controls.Add(this.labelSubjects);
             this.Controls.Add(this.labelTeachers);
             this.Controls.Add(this.labelSpecialties);
@@ -155,5 +171,6 @@ namespace CourseWork
         private System.Windows.Forms.Label labelSpecialties;
         private System.Windows.Forms.Label labelTeachers;
         private System.Windows.Forms.Label labelSubjects;
+        private System.Windows.Forms.Label labelGroups;
     }
 }

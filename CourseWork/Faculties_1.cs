@@ -88,5 +88,15 @@ namespace CourseWork
             Parent.Controls.Add(subjects);
             Parent.ChildElem = subjects;
         }
+
+        private void labelGroups_Click(object sender, EventArgs e)
+        {
+            Parent.Controls.Remove(this);
+
+            GroupsSt groups = new GroupsSt(Parent);
+            groups.Location = new Point(250, 49);
+            Parent.Controls.Add(groups);
+            Parent.ChildElem = groups;
+        }
     }
 }
