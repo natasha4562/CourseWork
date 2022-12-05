@@ -106,7 +106,7 @@ namespace CourseWork.ControlsAdd
             {
                 groupStudent.Number = textBoxName.Text;
                 int num = int.Parse(comboBoxSemester.Text);
-                groupStudent.Course = num / 2 + num % 2;
+                //groupStudent.Course = num / 2 + num % 2;
                 groupStudent.Semester = num;
                 groupStudent.IdSpeciality = db.Specialities.Where(s => s.Name == comboBoxSpeciality.Text).FirstOrDefault().Id;
 
